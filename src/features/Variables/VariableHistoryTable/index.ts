@@ -1,0 +1,1 @@
+export {VariableHistoryTable} from './ui/VariableHistoryTable'

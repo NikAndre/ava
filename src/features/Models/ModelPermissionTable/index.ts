@@ -1,0 +1,1 @@
+export {ModelPermissionTable} from './ui/ModelPermissionTable'

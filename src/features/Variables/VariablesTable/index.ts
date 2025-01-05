@@ -1,0 +1,1 @@
+export { VariablesDataTable } from './ui/VariablesTable'

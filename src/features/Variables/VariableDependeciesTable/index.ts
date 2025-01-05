@@ -1,0 +1,1 @@
+export {VariableDependeciesTable} from './ui/VariableDependeciesTable'

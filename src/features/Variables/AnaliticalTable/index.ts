@@ -1,0 +1,1 @@
+export {AnaliticalDataTable} from "./ui/AnaliticalTable";

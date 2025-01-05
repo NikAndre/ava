@@ -1,0 +1,1 @@
+export { VariablesListWidget } from "@/widgets/VariablesListWidget/ui/VariablesListWidget";

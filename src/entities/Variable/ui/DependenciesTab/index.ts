@@ -1,0 +1,1 @@
+export {DependenciesTab} from './ui/DependenciesTab'
