@@ -1,54 +1,62 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    variablesList: [],
-    activeVariable: null,
-    checkedVariablesList: [],
-    activeTab:'all'
-}
+  variablesList: [],
+  activeVariable: null,
+  checkedVariablesList: [],
+  activeTab: "all",
+};
 
 export const variablesSlice = createSlice({
-  name: 'variables',
+  name: "variables",
   initialState,
   reducers: {
     setVariableList: (state, action) => {
       if (action.payload?.length) {
-        state.variablesList = action.payload
+        state.variablesList = action.payload;
       }
     },
     setActiveVariable: (state, action) => {
       if (action.payload.id) {
-        const variable = [...state.variablesList].find(elem => elem.id === action.payload.id)
-        state.activeVariable = variable
+        const variable = [...state.variablesList].find(
+          (elem) => elem.id === action.payload.id,
+        );
+        state.activeVariable = variable;
       }
     },
     addVariableToCheckedList: (state, action) => {
       if (action.payload.variable.id) {
-        const isInList = [...state.checkedVariablesList].find(elem => elem.id === action.payload.variable.id)
+        const isInList = [...state.checkedVariablesList].find(
+          (elem) => elem.id === action.payload.variable.id,
+        );
         const newVariableList = isInList
           ? [...state.checkedVariablesList]
-          : [...state.checkedVariablesList, action.payload.variable]
+          : [...state.checkedVariablesList, action.payload.variable];
 
-        state.checkedVariablesList = newVariableList
+        state.checkedVariablesList = newVariableList;
       }
     },
     removeVariableFromCheckedList: (state, action) => {
-      const newCheckedArray = state.checkedVariablesList?.filter(elem => elem.id !== action.payload.id)
+      const newCheckedArray = state.checkedVariablesList?.filter(
+        (elem) => elem.id !== action.payload.id,
+      );
 
-      state.checkedVariablesList = newCheckedArray
+      state.checkedVariablesList = newCheckedArray;
     },
     clearActiveVariable: (state) => {
-      state.activeVariable = null
+      state.activeVariable = null;
     },
-    setActiveTab: (state,action) => {
-      const isInChecked =  state.checkedVariablesList?.find(elem => elem.name !== action.payload.name)
+    setActiveTab: (state, action) => {
+      const isInChecked = state.checkedVariablesList?.find(
+        (elem) => elem.name !== action.payload.name,
+      );
 
       if (action.payload.name && isInChecked) {
-        state.activeTab = action.payload.name
+        state.activeTab = action.payload.name;
       }
-    }
+    },
   },
-})
+});
 
 // Action creators are generated for each case reducer function
 export const {
@@ -57,7 +65,7 @@ export const {
   clearActiveVariable,
   addVariableToCheckedList,
   setActiveTab,
-  removeVariableFromCheckedList
-} = variablesSlice.actions
+  removeVariableFromCheckedList,
+} = variablesSlice.actions;
 
-export default variablesSlice.reducer
+export default variablesSlice.reducer;

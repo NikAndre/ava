@@ -1,1 +1,1 @@
-export {DataTab} from './ui/DataTab'
+export { DataTab } from "./ui/DataTab";

@@ -1,1 +1,1 @@
-export { ModelInformationForm } from './ui/ModelInformationForm'
+export { ModelInformationForm } from "./ui/ModelInformationForm";

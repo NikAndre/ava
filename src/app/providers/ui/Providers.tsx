@@ -3,14 +3,14 @@ import { Router } from "@/app/router";
 import { BrowserRouter } from "react-router-dom";
 import "@/shared/styles/index.css";
 import { Provider } from "react-redux";
-import {store} from "@/shared/store/"
+import { store } from "@/shared/store/";
 
 export const Providers = () => {
   return (
-          <BrowserRouter>
-            <Provider store={store}>
-              <Router />
-            </Provider>
-          </BrowserRouter>
+    <BrowserRouter>
+      <Provider store={store}>
+        <Router />
+      </Provider>
+    </BrowserRouter>
   );
 };

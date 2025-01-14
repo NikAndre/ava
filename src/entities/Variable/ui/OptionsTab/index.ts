@@ -1,1 +1,1 @@
-export {OptionsTab} from './ui/OptionsTab'
+export { OptionsTab } from "./ui/OptionsTab";

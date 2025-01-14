@@ -1,1 +1,1 @@
-export {ModelPermissionTable} from './ui/ModelPermissionTable'
+export { ModelPermissionTable } from "./ui/ModelPermissionTable";

@@ -1,1 +1,1 @@
-export {InformationTab} from './ui/InformationTab'
+export { InformationTab } from "./ui/InformationTab";

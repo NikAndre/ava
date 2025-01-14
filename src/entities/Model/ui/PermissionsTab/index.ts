@@ -1,1 +1,1 @@
-export { PermissionsTab } from './ui/PermissionsTab'
+export { PermissionsTab } from "./ui/PermissionsTab";

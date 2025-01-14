@@ -1,1 +1,1 @@
-export {DependenciesTab} from './ui/DependenciesTab'
+export { DependenciesTab } from "./ui/DependenciesTab";

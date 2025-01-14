@@ -1,1 +1,1 @@
-export {VariableHistoryTable} from './ui/VariableHistoryTable'
+export { VariableHistoryTable } from "./ui/VariableHistoryTable";

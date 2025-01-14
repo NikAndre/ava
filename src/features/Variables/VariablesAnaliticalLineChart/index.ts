@@ -1,1 +1,1 @@
-export {AnaliticalLineChart} from './ui/VariablesAnaliticalLineChart'
+export { AnaliticalLineChart } from "./ui/VariablesAnaliticalLineChart";

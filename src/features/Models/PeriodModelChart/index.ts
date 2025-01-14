@@ -1,1 +1,1 @@
-export {PeriodModelChart} from './ui/PeriodModelChart'
+export { PeriodModelChart } from "./ui/PeriodModelChart";

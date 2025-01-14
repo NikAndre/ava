@@ -1,1 +1,1 @@
-export {VariablePermissionsTable} from './ui/VariablePermissionsTable'
+export { VariablePermissionsTable } from "./ui/VariablePermissionsTable";

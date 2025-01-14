@@ -1,10 +1,29 @@
 .page_wrapper {
-    width: 100vw;
-    height: 100vh;
-    padding: 24px 5px 14px;
+  width: 100vw;
+  height: 100vh;
+  padding: 24px 5px 14px;
 }
 
 .content_wrapper {
-    width: 100%;
-    height: calc(100% - 54px);
+  width: 100%;
+  height: calc(100% - 54px);
+}
+
+.input_list_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 41%;
+}
+
+.input_wrapper {
+  display: flex;
+  gap: 13.5%
+}
+
+.input_wrapper p{
+  width: 30%;
+  size: 14px;
+  font-weight: 500;
 }

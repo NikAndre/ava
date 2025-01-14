@@ -1,42 +1,39 @@
-import {Switch} from "@/shared/components/ui/switch";
-import React, {useState} from "react";
-import {VariablePermissionsTable} from "@/features/Variables/VariablePermissionsTable";
+import { Switch } from "@/shared/components/ui/switch";
+import React, { useState } from "react";
+import { VariablePermissionsTable } from "@/features/Variables/VariablePermissionsTable";
 
-const data = [{
-  id: 'e12e21e2e21e',
-  userName: 'Денис Зайцев',
-  viewPermission: false,
-  changePermission: true,
-}]
+const data = [
+  {
+    id: "e12e21e2e21e",
+    userName: "Денис Зайцев",
+    viewPermission: false,
+    changePermission: true,
+  },
+];
 
 export const PermissionsTab = () => {
-  const [ fieldChecked, setFieldChecked ] = useState(false)
+  const [fieldChecked, setFieldChecked] = useState(false);
   return (
     <div
       style={{
-        width: '704px'
+        width: "704px",
       }}
     >
       <div
         style={{
-          display: 'flex',
-          gap:'5px',
-          marginBottom: '40px',
-          alignItems: 'center'
+          display: "flex",
+          gap: "5px",
+          marginBottom: "40px",
+          alignItems: "center",
         }}
       >
         <Switch
           checked={fieldChecked}
-          onCheckedChange={() => setFieldChecked(field => !field)}
+          onCheckedChange={() => setFieldChecked((field) => !field)}
         />
-        <p>
-          Доступ на просмотр для всех пользователей
-        </p>
+        <p>Доступ на просмотр для всех пользователей</p>
       </div>
-      <VariablePermissionsTable  data={data}/>
+      <VariablePermissionsTable data={data} />
     </div>
   );
 };
-
-
-

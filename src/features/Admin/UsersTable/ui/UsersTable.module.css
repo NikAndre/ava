@@ -1,0 +1,19 @@
+.cell:first-child {
+    width: 21%;
+}
+
+.cell:last-child {
+    width: 13%;
+}
+
+.cell:nth-child(2) {
+    width: 13%;
+}
+
+.cell:nth-child(3) {
+    width: 17.8%;
+}
+
+tr {
+    height: 43px;
+}

@@ -1,3 +1,3 @@
-import ModelsPage from "@/pages/ModelsPage/ui/ModelsPage.tsx";
+import ModelsPage from "./ui/ModelsPage.tsx";
 
 export default ModelsPage;

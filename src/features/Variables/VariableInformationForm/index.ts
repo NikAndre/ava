@@ -1,1 +1,1 @@
-export { VariableInformationForm } from './ui/VariableInformationForm'
+export { VariableInformationForm } from "./ui/VariableInformationForm";

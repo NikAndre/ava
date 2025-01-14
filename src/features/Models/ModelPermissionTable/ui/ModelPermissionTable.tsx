@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 import {
   ColumnDef,
   flexRender,
@@ -7,7 +7,7 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table"
+} from "@tanstack/react-table";
 import {
   Table,
   TableBody,
@@ -15,8 +15,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/shared/components/ui/table"
-import {Checkbox} from "@/shared/components/ui/checkbox";
+} from "@/shared/components/ui/table";
+import { Checkbox } from "@/shared/components/ui/checkbox";
 import {
   Select,
   SelectContent,
@@ -24,28 +24,36 @@ import {
   SelectItem,
   SelectLabel,
   SelectTrigger,
-  SelectValue
+  SelectValue,
 } from "@/shared/components/ui/select";
 
 export type VariablesType = {
-  id: string
-  userName: string
-  viewPermission: boolean
-  changePermission: boolean
-}
+  id: string;
+  userName: string;
+  viewPermission: boolean;
+  changePermission: boolean;
+};
 
-export function ModelPermissionTable ({data}) {
+export function ModelPermissionTable({ data }) {
   const columns: ColumnDef<VariablesType>[] = [
     {
       accessorKey: "userName",
       header: () => <div className="text-primary">Название метрики</div>,
-      cell: ({ row }) =>  <div style={{paddingLeft: '5px'}}>{row.getValue("userName")}</div>,
+      cell: ({ row }) => (
+        <div style={{ paddingLeft: "5px" }}>{row.getValue("userName")}</div>
+      ),
     },
     {
       accessorKey: "viewPermission",
       header: () => <div className="text-primary">Актуальность данных</div>,
       cell: ({ row }) => (
-        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <Checkbox
             checked={row.getValue("viewPermission")}
             onCheckedChange={(value) => row.toggleSelected(!!value)}
@@ -58,7 +66,13 @@ export function ModelPermissionTable ({data}) {
       accessorKey: "changePermission",
       header: () => <div className="text-primary">Владелец</div>,
       cell: ({ row }) => (
-        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <Checkbox
             checked={row.getValue("changePermission")}
             onCheckedChange={(value) => row.toggleSelected(!!value)}
@@ -67,7 +81,7 @@ export function ModelPermissionTable ({data}) {
         </div>
       ),
     },
-  ]
+  ];
 
   const table = useReactTable({
     data,
@@ -76,7 +90,7 @@ export function ModelPermissionTable ({data}) {
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
-  })
+  });
 
   return (
     <div className="w-full">
@@ -84,20 +98,18 @@ export function ModelPermissionTable ({data}) {
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow
-                key={headerGroup.id}
-              >
+              <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id} className="border">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
+                            header.column.columnDef.header,
+                            header.getContext(),
+                          )}
                     </TableHead>
-                  )
+                  );
                 })}
               </TableRow>
             ))}
@@ -111,10 +123,14 @@ export function ModelPermissionTable ({data}) {
                   onClick={() => {}}
                 >
                   {row.getVisibleCells().map((cell, index) => (
-                    <TableCell key={cell.id} className="border w-[200px]" style={index === 0 ? {width: '306px'} : {}}>
+                    <TableCell
+                      key={cell.id}
+                      className="border w-[200px]"
+                      style={index === 0 ? { width: "306px" } : {}}
+                    >
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext()
+                        cell.getContext(),
                       )}
                     </TableCell>
                   ))}
@@ -131,38 +147,30 @@ export function ModelPermissionTable ({data}) {
               </TableRow>
             )}
             <TableRow>
-              <TableCell className="border" style={{padding: '0'}}>
-                <Select onValueChange={() => {
-
-                }}>
+              <TableCell className="border" style={{ padding: "0" }}>
+                <Select onValueChange={() => {}}>
                   <SelectTrigger className="w-[100%] border-0 act">
-                    <SelectValue  placeholder="Выбрать состояние" />
+                    <SelectValue placeholder="Выбрать состояние" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
                       <SelectLabel>Пользователи</SelectLabel>
-                      <SelectItem  value="1">Вася</SelectItem>
-                      <SelectItem  value="2">Петя</SelectItem>
+                      <SelectItem value="1">Вася</SelectItem>
+                      <SelectItem value="2">Петя</SelectItem>
                     </SelectGroup>
                   </SelectContent>
                 </Select>
               </TableCell>
-              <TableCell style={{ textAlign: 'center'}} className="border">
-                <Checkbox
-                  disabled={true}
-                  aria-label="Select row"
-                />
+              <TableCell style={{ textAlign: "center" }} className="border">
+                <Checkbox disabled={true} aria-label="Select row" />
               </TableCell>
-              <TableCell style={{ textAlign: 'center'}}   className="border">
-                <Checkbox
-                  disabled={true}
-                  aria-label="Select row"
-                />
+              <TableCell style={{ textAlign: "center" }} className="border">
+                <Checkbox disabled={true} aria-label="Select row" />
               </TableCell>
             </TableRow>
           </TableBody>
         </Table>
       </div>
     </div>
-  )
+  );
 }

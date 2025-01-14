@@ -1,1 +1,1 @@
-export { VariablesDataTable } from './ui/VariablesTable'
+export { VariablesDataTable } from "./ui/VariablesTable";

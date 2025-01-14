@@ -1,1 +1,1 @@
-import { NavMenu } from "./ui/NavMenu"
+import { NavMenu } from "./ui/NavMenu";

@@ -1,1 +1,1 @@
-export {VariablesOptionChart} from './ui/VariableOptionsChart'
+export { VariablesOptionChart } from "./ui/VariableOptionsChart";

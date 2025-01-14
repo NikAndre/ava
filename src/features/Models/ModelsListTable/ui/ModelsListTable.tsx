@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setModelsList,
@@ -6,8 +6,8 @@ import {
   addModelToCheckedList,
   removeModelFromCheckedList,
   setActiveTab,
-  clearActiveModel
-} from '@/shared/store/slices/modelsSlice'
+  clearActiveModel,
+} from "@/shared/store/slices/modelsSlice";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -19,8 +19,8 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table"
-import { Button } from "@/shared/components/ui/button"
+} from "@tanstack/react-table";
+import { Button } from "@/shared/components/ui/button";
 import {
   Table,
   TableBody,
@@ -28,23 +28,59 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/shared/components/ui/table"
-import {useEffect} from "react";
+} from "@/shared/components/ui/table";
+import { useEffect } from "react";
 
 const data: ModelsType[] = [
   {
-    id: '1',
+    id: "1",
     modelName: "product X PL",
-    tags: 'PL',
+    tags: "PL",
     status: "опубликована",
-    username: 'Денис',
+    username: "Денис",
     chartData: [
-      { month: "January", desktop1: 186, desktop2: 246, desktop3: 326, mobile: 80 },
-      { month: "February", desktop1: 186, desktop2: 286, desktop3: 386, mobile: 200 },
-      { month: "March", desktop1: 756, desktop2:123, desktop3: 222, mobile: 120 },
-      { month: "April", desktop1: 432, desktop2: 286, desktop3: 123, mobile: 190 },
-      { month: "May", desktop1: 123, desktop2: 444, desktop3: 222, mobile: 130 },
-      { month: "June", desktop1: 321, desktop2: 346, desktop3: 215, mobile: 140 },
+      {
+        month: "January",
+        desktop1: 186,
+        desktop2: 246,
+        desktop3: 326,
+        mobile: 80,
+      },
+      {
+        month: "February",
+        desktop1: 186,
+        desktop2: 286,
+        desktop3: 386,
+        mobile: 200,
+      },
+      {
+        month: "March",
+        desktop1: 756,
+        desktop2: 123,
+        desktop3: 222,
+        mobile: 120,
+      },
+      {
+        month: "April",
+        desktop1: 432,
+        desktop2: 286,
+        desktop3: 123,
+        mobile: 190,
+      },
+      {
+        month: "May",
+        desktop1: 123,
+        desktop2: 444,
+        desktop3: 222,
+        mobile: 130,
+      },
+      {
+        month: "June",
+        desktop1: 321,
+        desktop2: 346,
+        desktop3: 215,
+        mobile: 140,
+      },
     ],
     barChartData: [
       { month: "paid base eop (BL)", visitors: 100 },
@@ -52,21 +88,57 @@ const data: ModelsType[] = [
       { month: "inflow", visitors: -1 },
       { month: "outflow", visitors: 15 },
       { month: "paid base eop (EL)", visitors: 114 },
-    ]
+    ],
   },
   {
-    id: '2',
+    id: "2",
     modelName: "revenue product cloud",
-    tags: 'revenue, cloud',
+    tags: "revenue, cloud",
     status: "опубликована",
-    username: 'Vasya',
+    username: "Vasya",
     chartData: [
-      { month: "January", desktop1: 321, desktop2: 213, desktop3: 876, mobile: 123 },
-      { month: "February", desktop1: 543, desktop2: 342, desktop3: 345, mobile: 123 },
-      { month: "March", desktop1: 21, desktop2:543, desktop3: 222, mobile: 120 },
-      { month: "April", desktop1: 123, desktop2: 173, desktop3: 123, mobile: 432 },
-      { month: "May", desktop1: 222, desktop2: 111, desktop3: 333, mobile: 123 },
-      { month: "June", desktop1: 321, desktop2: 346, desktop3: 215, mobile: 140 },
+      {
+        month: "January",
+        desktop1: 321,
+        desktop2: 213,
+        desktop3: 876,
+        mobile: 123,
+      },
+      {
+        month: "February",
+        desktop1: 543,
+        desktop2: 342,
+        desktop3: 345,
+        mobile: 123,
+      },
+      {
+        month: "March",
+        desktop1: 21,
+        desktop2: 543,
+        desktop3: 222,
+        mobile: 120,
+      },
+      {
+        month: "April",
+        desktop1: 123,
+        desktop2: 173,
+        desktop3: 123,
+        mobile: 432,
+      },
+      {
+        month: "May",
+        desktop1: 222,
+        desktop2: 111,
+        desktop3: 333,
+        mobile: 123,
+      },
+      {
+        month: "June",
+        desktop1: 321,
+        desktop2: 346,
+        desktop3: 215,
+        mobile: 140,
+      },
     ],
     barChartData: [
       { month: "paid base eop (BL)", visitors: 100 },
@@ -74,21 +146,57 @@ const data: ModelsType[] = [
       { month: "inflow", visitors: -1 },
       { month: "outflow", visitors: 15 },
       { month: "paid base eop (EL)", visitors: 114 },
-    ]
+    ],
   },
   {
-    id: '3',
+    id: "3",
     modelName: "inflow paid base",
-    tags: 'base',
+    tags: "base",
     status: "черновик",
-    username: 'Vasya',
+    username: "Vasya",
     chartData: [
-      { month: "January", desktop1: 186, desktop2: 246, desktop3: 326, mobile: 80 },
-      { month: "February", desktop1: 186, desktop2: 286, desktop3: 386, mobile: 200 },
-      { month: "March", desktop1: 756, desktop2:123, desktop3: 222, mobile: 120 },
-      { month: "April", desktop1: 432, desktop2: 286, desktop3: 123, mobile: 190 },
-      { month: "May", desktop1: 123, desktop2: 444, desktop3: 222, mobile: 130 },
-      { month: "June", desktop1: 321, desktop2: 346, desktop3: 215, mobile: 140 },
+      {
+        month: "January",
+        desktop1: 186,
+        desktop2: 246,
+        desktop3: 326,
+        mobile: 80,
+      },
+      {
+        month: "February",
+        desktop1: 186,
+        desktop2: 286,
+        desktop3: 386,
+        mobile: 200,
+      },
+      {
+        month: "March",
+        desktop1: 756,
+        desktop2: 123,
+        desktop3: 222,
+        mobile: 120,
+      },
+      {
+        month: "April",
+        desktop1: 432,
+        desktop2: 286,
+        desktop3: 123,
+        mobile: 190,
+      },
+      {
+        month: "May",
+        desktop1: 123,
+        desktop2: 444,
+        desktop3: 222,
+        mobile: 130,
+      },
+      {
+        month: "June",
+        desktop1: 321,
+        desktop2: 346,
+        desktop3: 215,
+        mobile: 140,
+      },
     ],
     barChartData: [
       { month: "paid base eop (BL)", visitors: 100 },
@@ -96,63 +204,60 @@ const data: ModelsType[] = [
       { month: "inflow", visitors: -1 },
       { month: "outflow", visitors: 15 },
       { month: "paid base eop (EL)", visitors: 114 },
-    ]
-  }
-]
+    ],
+  },
+];
 
 export type ModelsType = {
-  modelName: string
-  tags: string
-  status: string
-  username: string
-  chartData: object[]
-}
+  modelName: string;
+  tags: string;
+  status: string;
+  username: string;
+  chartData: object[];
+};
 
 export function ModelsListTable() {
   const columns: ColumnDef<ModelsType>[] = [
     {
       accessorKey: "modelName",
       header: () => <div className="text-primary">Название модели</div>,
-      cell: ({ row }) =>  <div>{row.getValue("modelName")}</div>
+      cell: ({ row }) => <div>{row.getValue("modelName")}</div>,
     },
     {
       accessorKey: "tags",
       header: () => <div className="text-primary">Теги</div>,
-      cell: ({ row }) => (
-        <div>{row.getValue("tags")}</div>
-      ),
+      cell: ({ row }) => <div>{row.getValue("tags")}</div>,
     },
     {
       accessorKey: "status",
       header: () => <div className="text-primary">Состояние</div>,
       cell: ({ row }) => {
-        return <div>{row.getValue("status")}</div>
+        return <div>{row.getValue("status")}</div>;
       },
     },
     {
       accessorKey: "username",
       header: () => <div className="text-primary">Владелец</div>,
       cell: ({ row }) => {
-        return <div>{row.getValue("username")}</div>
+        return <div>{row.getValue("username")}</div>;
       },
     },
-  ]
+  ];
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setModelsList(data))
-  }, [])
+    dispatch(setModelsList(data));
+  }, []);
 
-  const models = useSelector((store) => store.models.modelsList)
+  const models = useSelector((store) => store.models.modelsList);
 
-
-  const [sorting, setSorting] = React.useState<SortingState>([])
+  const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
+    [],
+  );
   const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
+    React.useState<VisibilityState>({});
+  const [rowSelection, setRowSelection] = React.useState({});
 
   const table = useReactTable({
     data: models,
@@ -171,7 +276,7 @@ export function ModelsListTable() {
       columnVisibility,
       rowSelection,
     },
-  })
+  });
 
   return (
     <div className="w-full">
@@ -179,20 +284,18 @@ export function ModelsListTable() {
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow
-                key={headerGroup.id}
-              >
+              <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id} className="border">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
+                            header.column.columnDef.header,
+                            header.getContext(),
+                          )}
                     </TableHead>
-                  )
+                  );
                 })}
               </TableRow>
             ))}
@@ -204,17 +307,17 @@ export function ModelsListTable() {
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
                   onClick={() => {
-                    dispatch(setActiveModel({id: row.original.id}))
-                    dispatch(addModelToCheckedList({model: row.original}))
-                    dispatch(setActiveTab({name: row.original.modelName}))
+                    dispatch(setActiveModel({ id: row.original.id }));
+                    dispatch(addModelToCheckedList({ model: row.original }));
+                    dispatch(setActiveTab({ name: row.original.modelName }));
                   }}
-                  style={{cursor:'pointer'}}
+                  style={{ cursor: "pointer" }}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id} className="border">
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext()
+                        cell.getContext(),
                       )}
                     </TableCell>
                   ))}
@@ -254,5 +357,5 @@ export function ModelsListTable() {
         </div>
       </div>
     </div>
-  )
+  );
 }

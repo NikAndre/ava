@@ -1,3 +1,3 @@
-import AdminPage from "@/pages/AdminPage/ui/AdminPage.tsx";
+import AdminPage from "./ui/AdminPage.tsx";
 
 export default AdminPage;

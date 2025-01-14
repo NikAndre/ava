@@ -1,1 +1,1 @@
-export {ModelDataTable} from "./ui/ModelDataTable";
+export { ModelDataTable } from "./ui/ModelDataTable";

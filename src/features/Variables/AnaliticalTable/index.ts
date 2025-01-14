@@ -1,1 +1,1 @@
-export {AnaliticalDataTable} from "./ui/AnaliticalTable";
+export { AnaliticalDataTable } from "./ui/AnaliticalTable";

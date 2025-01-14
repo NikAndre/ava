@@ -4,8 +4,7 @@ import { VariableInformationForm } from "@/features/Variables/VariableInformatio
 export const InformationTab = () => {
   return (
     <>
-      <VariableInformationForm/>
+      <VariableInformationForm />
     </>
   );
 };
-

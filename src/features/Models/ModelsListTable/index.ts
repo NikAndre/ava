@@ -1,1 +1,1 @@
-export { ModelsListTable } from './ui/ModelsListTable'
+export { ModelsListTable } from "./ui/ModelsListTable";

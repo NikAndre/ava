@@ -1,1 +1,1 @@
-export {VariableFactorBarChart} from './ui/VariableFactorBarChart'
+export { VariableFactorBarChart } from "./ui/VariableFactorBarChart";
