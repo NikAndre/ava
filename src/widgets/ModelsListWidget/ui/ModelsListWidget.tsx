@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-//import styles from "./VariablesPage.module.css";
 import { Input } from "@/shared/components/ui/input";
 import { Button } from "@/shared/components/ui/button";
 import { Switch } from "@/shared/components/ui/switch";
 import { ModelsListTable } from "@/features/Models/ModelsListTable/ui/ModelsListTable";
 
 export const ModelsListWidget = () => {
-  const [fieldChecked, setFieldChecked] = useState(false);
+  const [fieldChecked, setFieldChecked] = useState<boolean>(false);
   return (
     <>
       <div

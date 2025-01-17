@@ -18,7 +18,7 @@ const ModelsPage: FC = () => {
   const checkedModels = useSelector((store) => store.models.checkedModelsList);
   const activeTab = useSelector((store) => store.models.activeTab);
   const dispatch = useDispatch();
-  console.log(checkedModels);
+
   const handleTabClick = (elem) => {
     dispatch(setActiveModel({ id: elem.id }));
     dispatch(setActiveTab({ name: elem.modelName }));
