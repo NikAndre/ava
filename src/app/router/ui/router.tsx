@@ -6,12 +6,13 @@ import {
 } from "@/app/router/constants";
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
+import ProfilePage from "@/pages/ProfilePage";
 
 const HomePage = lazy(() => import("@/pages/HomePage"));
 const VariablesPage = lazy(() => import("@/pages/VariablesPage"));
 const ModelsPage = lazy(() => import("@/pages/ModelsPage"));
 const AdminPage = lazy(() => import("@/pages/AdminPage"));
-const ProfilePage = lazy(() => import("@/pages/ProfilePage"));
+//const ProfilePage = lazy(() => import("@/pages/ProfilePage"));
 const RequestPage = lazy(() => import("@/pages/RequestPage"));
 
 export const Router = () => {
