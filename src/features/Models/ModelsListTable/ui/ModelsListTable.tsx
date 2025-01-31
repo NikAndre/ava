@@ -4,9 +4,7 @@ import {
   setModelsList,
   setActiveModel,
   addModelToCheckedList,
-  removeModelFromCheckedList,
   setActiveTab,
-  clearActiveModel,
 } from "@/shared/store/slices/modelsSlice";
 import {
   ColumnDef,
@@ -30,8 +28,9 @@ import {
   TableRow,
 } from "@/shared/components/ui/table";
 import { useEffect } from "react";
+import {ModelType} from "@/shared/store/slices/modelsSlice/types.ts";
 
-const data: ModelsType[] = [
+const data: ModelType[] = [
   {
     id: "1",
     modelName: "product X PL",
@@ -208,16 +207,9 @@ const data: ModelsType[] = [
   },
 ];
 
-export type ModelsType = {
-  modelName: string;
-  tags: string;
-  status: string;
-  username: string;
-  chartData: object[];
-};
 
 export function ModelsListTable() {
-  const columns: ColumnDef<ModelsType>[] = [
+  const columns: ColumnDef<ModelType>[] = [
     {
       accessorKey: "modelName",
       header: () => <div className="text-primary">Название модели</div>,
@@ -309,7 +301,7 @@ export function ModelsListTable() {
                   onClick={() => {
                     dispatch(setActiveModel({ id: row.original.id }));
                     dispatch(addModelToCheckedList({ model: row.original }));
-                    dispatch(setActiveTab({ name: row.original.modelName }));
+                    dispatch(setActiveTab({ modelName: row.original.modelName }));
                   }}
                   style={{ cursor: "pointer" }}
                 >

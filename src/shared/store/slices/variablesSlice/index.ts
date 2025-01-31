@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { VariableSliceType} from "@/shared/store/slices/variablesSlice/types.ts";
 
-const initialState = {
+const initialState: VariableSliceType = {
   variablesList: [],
   activeVariable: null,
   checkedVariablesList: [],
@@ -21,7 +22,7 @@ export const variablesSlice = createSlice({
         const variable = [...state.variablesList].find(
           (elem) => elem.id === action.payload.id,
         );
-        state.activeVariable = variable;
+        state.activeVariable = variable || null;
       }
     },
     addVariableToCheckedList: (state, action) => {
@@ -33,7 +34,7 @@ export const variablesSlice = createSlice({
           ? [...state.checkedVariablesList]
           : [...state.checkedVariablesList, action.payload.variable];
 
-        state.checkedVariablesList = newVariableList;
+        state.checkedVariablesList = newVariableList || [];
       }
     },
     removeVariableFromCheckedList: (state, action) => {
@@ -48,7 +49,7 @@ export const variablesSlice = createSlice({
     },
     setActiveTab: (state, action) => {
       const isInChecked = state.checkedVariablesList?.find(
-        (elem) => elem.name !== action.payload.name,
+        ({name}) => name !== action.payload.name,
       );
 
       if (action.payload.name && isInChecked) {

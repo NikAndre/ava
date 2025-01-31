@@ -1,22 +1,20 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import styles from "./RequestPage.module.css";
 import { HeaderWidget } from "@/widgets/HeaderWidget";
-import {Input} from "@/shared/components/ui/input";
-import {Button} from "@/shared/components/ui/button";
-import {Switch} from "@/shared/components/ui/switch";
 import {Tabs, TabsList, TabsTrigger} from "@/shared/components/ui/tabs";
 import {SquareX} from "lucide-react";
 import {useDispatch, useSelector} from "react-redux";
 import {
-  clearActiveModel,
-  removeModelFromCheckedList,
-  setActiveModel,
-  setActiveTab
-} from "@/shared/store/slices/modelsSlice";
-import {RequestsListTable} from "@/features/Requests/RequestsListTable";
-import {RequestsType} from "@/features/Requests/RequestsListTable/ui/RequestsListTable";
+  setActiveRequest,
+  clearActiveRequest,
+  setActiveTab,
+  removeRequestFromCheckedList,
+} from "@/shared/store/slices/requestsSlice";
+import {RequestType} from "@/shared/store/slices/requestsSlice/types.ts";
+import {RequestsListWidget} from "@/widgets/RequestsListWidget";
+import {RequestWidget} from "@/widgets/RequestWidget";
 
-const data: RequestsType[] = [
+const data: RequestType[] = [
   {
     id: 'dsfdsfdsf',
     requestNumber: 1,
@@ -40,32 +38,34 @@ const data: RequestsType[] = [
 ];
 
 const RequestPage: FC = () => {
-  const [fieldChecked, setFieldChecked] = useState<boolean>(false);
   const [activeType, setActiveType] = useState<string>('requests');
   const activeRequest = useSelector((store) => store.requests.activeRequest);
   const checkedRequests = useSelector((store) => store.requests.checkedRequestList);
   const activeTab = useSelector((store) => store.requests.activeTab);
   const dispatch = useDispatch();
 
+
   const handleTabClick = (elem) => {
-    dispatch(setActiveModel({ id: elem.id }));
+    dispatch(setActiveRequest({ id: elem.id }));
     dispatch(setActiveTab({ name: elem.requestName }));
   };
 
   const handleAllTabClick = () => {
     dispatch(setActiveTab({ name: "all" }));
-    dispatch(clearActiveModel());
+    dispatch(clearActiveRequest());
   };
 
   const handleCloseBtnClick = (event, elem) => {
     event.stopPropagation();
     if (elem.id === activeRequest?.id) {
-      dispatch(clearActiveModel());
+      dispatch(clearActiveRequest());
       dispatch(setActiveTab({ name: "all" }));
     }
-    dispatch(removeModelFromCheckedList({ id: elem.id }));
+    dispatch(removeRequestFromCheckedList({ id: elem.id }));
   };
 
+
+  console.log(activeRequest)
   return (
     <div className={styles["page_wrapper"]}>
       <HeaderWidget />
@@ -99,12 +99,12 @@ const RequestPage: FC = () => {
                 <TabsTrigger
                   onClick={() => handleTabClick(elem)}
                   key={elem.id}
-                  value={elem.modelName}
+                  value={elem.requestNumber}
                   style={{
                     position: "relative",
                   }}
                 >
-                  {elem.modelName}
+                  Заявка №{elem.requestNumber}
                   <SquareX
                     style={{
                       position: "absolute",
@@ -120,34 +120,8 @@ const RequestPage: FC = () => {
             })}
           </TabsList>
         </Tabs>
-        <div
-          style={{
-            display: "flex",
-            gap: "10px",
-          }}
-        >
-          <Input
-            type={"text"}
-            placeholder={"Введите номер заявки для поиска"}
-          />
-          { activeType === 'requests'  && <Button variant="default">Новая заявка</Button> }
-          { activeType === 'coordination'  && <Button variant="default">Согласовать все</Button> }
-        </div>
-        <div
-          style={{
-            display: "flex",
-            gap: "5px",
-            marginBottom: "20px",
-            alignItems: "center",
-          }}
-        >
-          <Switch
-            checked={fieldChecked}
-            onCheckedChange={() => setFieldChecked((field) => !field)}
-          />
-          <p>В работе</p>
-        </div>
-        <RequestsListTable data={data} type={activeType}/>
+        { !activeRequest && <RequestsListWidget activeType={activeType} data={data} />}
+        { activeRequest && <RequestWidget />}
 
       </main>
     </div>

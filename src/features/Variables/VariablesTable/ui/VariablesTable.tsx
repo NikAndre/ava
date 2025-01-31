@@ -28,12 +28,13 @@ import {
   TableRow,
 } from "@/shared/components/ui/table";
 import { useEffect } from "react";
+import { VariableType } from "@/shared/store/slices/variablesSlice/types.ts";
 
-const data: VariablesType[] = [
+const data: VariableType[] = [
   {
     id: "1",
     variableName: "paid base EOP",
-    tags: "base, EOP",
+    tags: ['base', 'EOP'],
     status: "опубликована",
     date: "Август 2024",
     username: "Vasya",
@@ -85,7 +86,7 @@ const data: VariablesType[] = [
   {
     id: "2",
     variableName: "revenue product cloud",
-    tags: "revenue, cloud",
+    tags: ['revenue', 'cloud'],
     status: "опубликована",
     date: "Сентябрь 2024",
     username: "Vasya",
@@ -137,7 +138,7 @@ const data: VariablesType[] = [
   {
     id: "3",
     variableName: "inflow paid base",
-    tags: "base",
+    tags: ["base"],
     status: "черновик",
     date: "Август 2024",
     username: "Vasya",
@@ -188,17 +189,8 @@ const data: VariablesType[] = [
   },
 ];
 
-export type VariablesType = {
-  variableName: string;
-  tags: string;
-  date: string;
-  status: string;
-  username: string;
-  chartData: object[];
-};
-
 export function VariablesDataTable() {
-  const columns: ColumnDef<VariablesType>[] = [
+  const columns: ColumnDef<VariableType>[] = [
     {
       accessorKey: "variableName",
       header: () => <div className="text-primary">Название переменной</div>,
@@ -207,7 +199,7 @@ export function VariablesDataTable() {
     {
       accessorKey: "tags",
       header: () => <div className="text-primary">Теги</div>,
-      cell: ({ row }) => <div>{row.getValue("tags")}</div>,
+      cell: ({ row }) => <div>{row.getValue("tags")?.join(', ')}</div>,
     },
     {
       accessorKey: "date",

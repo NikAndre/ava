@@ -21,11 +21,11 @@ const ModelsPage: FC = () => {
 
   const handleTabClick = (elem) => {
     dispatch(setActiveModel({ id: elem.id }));
-    dispatch(setActiveTab({ name: elem.modelName }));
+    dispatch(setActiveTab({ modelName: elem.modelName }));
   };
 
   const handleAllTabClick = () => {
-    dispatch(setActiveTab({ name: "all" }));
+    dispatch(setActiveTab({ modelName: "all" }));
     dispatch(clearActiveModel());
   };
 
@@ -33,7 +33,7 @@ const ModelsPage: FC = () => {
     event.stopPropagation();
     if (elem.id === activeModel?.id) {
       dispatch(clearActiveModel());
-      dispatch(setActiveTab({ name: "all" }));
+      dispatch(setActiveTab({ modelName: "all" }));
     }
     dispatch(removeModelFromCheckedList({ id: elem.id }));
   };

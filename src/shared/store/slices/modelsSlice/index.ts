@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {ModelSliceType} from "@/shared/store/slices/modelsSlice/types.ts";
 
-const initialState = {
+const initialState: ModelSliceType = {
   modelsList: [],
   activeModel: null,
   checkedModelsList: [],
   activeTab: "all",
-  checkedMetricsList: [],
+  checkedVariablesList: [],
 };
 
 export const modelsSlice = createSlice({
@@ -22,17 +23,17 @@ export const modelsSlice = createSlice({
         const model = [...state.modelsList].find(
           (elem) => elem.id === action.payload.id,
         );
-        state.activeModel = model;
+        state.activeModel = model || null;
       }
     },
     addModelToCheckedList: (state, action) => {
       if (action.payload.model.id) {
         const isInList = [...state.checkedModelsList].find(
-          (elem) => elem.id === action.payload.model.id,
+          ({id}) => id === action.payload.model.id,
         );
         const newModelsList = isInList
-          ? [...state.checkedMetricsList]
-          : [...state.checkedMetricsList, action.payload.model];
+          ? [...state.checkedModelsList]
+          : [...state.checkedModelsList, action.payload.model];
 
         state.checkedModelsList = newModelsList;
       }
@@ -48,24 +49,26 @@ export const modelsSlice = createSlice({
       state.activeModel = null;
     },
     setActiveTab: (state, action) => {
+      const { modelName } = action.payload
+
       const isInChecked = state.checkedModelsList?.find(
-        (elem) => elem.name !== action.payload.name,
+        ({ }) => name !== modelName,
       );
 
-      if (action.payload.name && isInChecked) {
-        state.activeTab = action.payload.name;
+      if (modelName && isInChecked) {
+        state.activeTab = modelName;
       }
     },
     addMetricToCheckedList: (state, action) => {
       if (action.payload.id) {
-        const metric = [...state.checkedMetricsList.metrics].filter(
+        const metric = [...state.checkedVariablesList.metrics].filter(
           (elem) => elem.id === action.payload.id,
         );
         const newVariableList = metric
-          ? [...state.checkedMetricsList]
-          : [...state.checkedMetricsList, metric];
+          ? [...state.checkedVariablesList]
+          : [...state.checkedVariablesList, metric];
 
-        state.checkedMetricsList = newVariableList;
+        state.checkedVariablesList = newVariableList;
       }
     },
     removeMetricFromCheckedList: (state, action) => {

@@ -24,24 +24,14 @@ import {
   TableRow,
 } from "@/shared/components/ui/table";
 import styles from "./RequestsListTable.module.css";
-
-export type RequestsType = {
-  id: string;
-  requestNumber: number;
-  type: 'Доступ к модели' | 'Доступ к метрике';
-  metric: string;
-  date: string;
-  status: 'Согласовано' | 'В работе';
-  owner: string;
-  user: string;
-};
+import {RequestType} from "@/shared/store/slices/requestsSlice/types.ts";
 
 export function RequestsListTable({
   type = 'requests',
   data
 }) {
   const dispatch = useDispatch();
-  const columns: ColumnDef<RequestsType>[] = [
+  const columns: ColumnDef<RequestType>[] = [
     {
       accessorKey: "requestNumber",
       header: () => <div className="text-primary">Номер заявки</div>,

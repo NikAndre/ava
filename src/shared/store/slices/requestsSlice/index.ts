@@ -1,7 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {RequestSliceType} from "./types.ts";
 
-const initialState = {
-  requestsList: [],
+const initialState: RequestSliceType = {
+  requestsList: [
+    {
+      id: 'dsfdsfdsf',
+      requestNumber: 1,
+      type: 'Доступ к метрике',
+      metric: 'paid base EOP',
+      date: '01.01.2025',
+      status: 'Согласовано',
+      owner: 'Иванов Иван',
+      user: 'Денис Зайцев',
+    },
+    {
+      id: 'asdsadsa',
+      requestNumber: 2,
+      type: 'Доступ к модели',
+      metric: 'product X P&L',
+      date: '01.01.2025',
+      status: 'В работе',
+      owner: 'Иванов Иван',
+      user: 'Денис Зайцев',
+    },
+  ],
   activeRequest: null,
   checkedRequestList: [],
   activeTab: "all",
@@ -18,15 +40,15 @@ export const requestsSlice = createSlice({
     },
     setActiveRequest: (state, action) => {
       if (action.payload.id) {
-        const request = [...state.requestsList].find(
-          (elem) => elem.id === action.payload.id,
+        const request = [...state.requestsList]?.find(
+          ({id}) => id === action.payload.id,
         );
-        state.activeRequest = request;
+        state.activeRequest = request || null;
       }
     },
     addRequestToCheckedList: (state, action) => {
       if (action.payload.request.id) {
-        const isInList = [...state.checkedRequestList].find(
+        const isInList = [...state.checkedRequestList]?.find(
           (elem) => elem.id === action.payload.request.id,
         );
         const newRequestList = isInList
