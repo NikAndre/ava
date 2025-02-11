@@ -1,0 +1,1 @@
+export {StatisticComposedChart} from './ui/StatisticComposedChart'

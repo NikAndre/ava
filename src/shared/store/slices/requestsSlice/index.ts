@@ -5,23 +5,29 @@ const initialState: RequestSliceType = {
   requestsList: [
     {
       id: 'dsfdsfdsf',
-      requestNumber: 1,
+      requestNumber: '1',
       type: 'Доступ к метрике',
       metric: 'paid base EOP',
-      date: '01.01.2025',
+      createDate: '01.01.2025',
+      changeDate: '01.01.2025',
       status: 'Согласовано',
       owner: 'Иванов Иван',
       user: 'Денис Зайцев',
+      userComment: 'Дsdfdsfsdaaf',
+      ownerComment: 'dsafsdfsdfsdafsdaf',
     },
     {
       id: 'asdsadsa',
-      requestNumber: 2,
+      requestNumber: '2',
       type: 'Доступ к модели',
       metric: 'product X P&L',
-      date: '01.01.2025',
+      createDate: '01.01.2025',
+      changeDate: '01.01.2025',
       status: 'В работе',
       owner: 'Иванов Иван',
       user: 'Денис Зайцев',
+      userComment: 'Дsdfdsfsdaaf',
+      ownerComment: 'dsafsdfsdfsdafsdaf',
     },
   ],
   activeRequest: null,
@@ -38,6 +44,7 @@ export const requestsSlice = createSlice({
         state.requestsList = action.payload;
       }
     },
+
     setActiveRequest: (state, action) => {
       if (action.payload.id) {
         const request = [...state.requestsList]?.find(
@@ -46,28 +53,28 @@ export const requestsSlice = createSlice({
         state.activeRequest = request || null;
       }
     },
+
     addRequestToCheckedList: (state, action) => {
       if (action.payload.request.id) {
         const isInList = [...state.checkedRequestList]?.find(
           (elem) => elem.id === action.payload.request.id,
         );
-        const newRequestList = isInList
-          ? [...state.checkedRequestList]
-          : [...state.checkedRequestList, action.payload.request];
 
-        state.checkedRequestList = newRequestList;
+        state.checkedRequestList = isInList
+            ? [...state.checkedRequestList]
+            : [...state.checkedRequestList, action.payload.request];
       }
     },
     removeRequestFromCheckedList: (state, action) => {
-      const newCheckedArray = state.checkedRequestList?.filter(
-        (elem) => elem.id !== action.payload.id,
+      state.checkedRequestList = state.checkedRequestList?.filter(
+          (elem) => elem.id !== action.payload.id,
       );
-
-      state.checkedRequestList = newCheckedArray;
     },
+
     clearActiveRequest: (state) => {
       state.activeRequest = null;
     },
+
     setActiveTab: (state, action) => {
       const isInChecked = state.checkedRequestList?.find(
         (elem) => elem.name !== action.payload.name,

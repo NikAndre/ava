@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import {FC, MouseEvent, useState} from "react";
 import styles from "./RequestPage.module.css";
 import { HeaderWidget } from "@/widgets/HeaderWidget";
 import {Tabs, TabsList, TabsTrigger} from "@/shared/components/ui/tabs";
@@ -10,32 +10,9 @@ import {
   setActiveTab,
   removeRequestFromCheckedList,
 } from "@/shared/store/slices/requestsSlice";
-import {RequestType} from "@/shared/store/slices/requestsSlice/types.ts";
 import {RequestsListWidget} from "@/widgets/RequestsListWidget";
 import {RequestWidget} from "@/widgets/RequestWidget";
-
-const data: RequestType[] = [
-  {
-    id: 'dsfdsfdsf',
-    requestNumber: 1,
-    type: 'Доступ к метрике',
-    metric: 'paid base EOP',
-    date: '01.01.2025',
-    status: 'Согласовано',
-    owner: 'Иванов Иван',
-    user: 'Денис Зайцев',
-  },
-  {
-    id: 'asdsadsa',
-    requestNumber: 2,
-    type: 'Доступ к модели',
-    metric: 'product X P&L',
-    date: '01.01.2025',
-    status: 'В работе',
-    owner: 'Иванов Иван',
-    user: 'Денис Зайцев',
-  },
-];
+import {RequestType} from "@/shared/store/slices/requestsSlice/types.ts";
 
 const RequestPage: FC = () => {
   const [activeType, setActiveType] = useState<string>('requests');
@@ -45,9 +22,9 @@ const RequestPage: FC = () => {
   const dispatch = useDispatch();
 
 
-  const handleTabClick = (elem) => {
+  const handleTabClick = (elem:RequestType) => {
     dispatch(setActiveRequest({ id: elem.id }));
-    dispatch(setActiveTab({ name: elem.requestName }));
+    dispatch(setActiveTab({ name: elem.requestNumber }));
   };
 
   const handleAllTabClick = () => {
@@ -55,7 +32,7 @@ const RequestPage: FC = () => {
     dispatch(clearActiveRequest());
   };
 
-  const handleCloseBtnClick = (event, elem) => {
+  const handleCloseBtnClick = (event:MouseEvent, elem:RequestType) => {
     event.stopPropagation();
     if (elem.id === activeRequest?.id) {
       dispatch(clearActiveRequest());
@@ -94,7 +71,7 @@ const RequestPage: FC = () => {
             <TabsTrigger onClick={handleAllTabClick} value="all">
               Все
             </TabsTrigger>
-            {checkedRequests?.map((elem) => {
+            {checkedRequests?.map((elem:RequestType) => {
               return (
                 <TabsTrigger
                   onClick={() => handleTabClick(elem)}
@@ -120,7 +97,7 @@ const RequestPage: FC = () => {
             })}
           </TabsList>
         </Tabs>
-        { !activeRequest && <RequestsListWidget activeType={activeType} data={data} />}
+        { !activeRequest && <RequestsListWidget activeType={activeType} />}
         { activeRequest && <RequestWidget />}
 
       </main>

@@ -1,13 +1,15 @@
 export type RequestType = {
     id: string;
-    requestNumber: number;
+    requestNumber: string;
     type: 'Доступ к модели' | 'Доступ к метрике';
     metric: string;
-    date: string;
+    createDate: string;
+    changeDate: string;
     status: 'Согласовано' | 'В работе';
-    point: string;
     owner: string;
     user: string;
+    userComment: string;
+    ownerComment: string;
 };
 
 export type RequestSliceType = {

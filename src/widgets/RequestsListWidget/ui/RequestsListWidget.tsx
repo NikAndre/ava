@@ -2,8 +2,7 @@ import {Input} from "@/shared/components/ui/input.tsx";
 import {Button} from "@/shared/components/ui/button.tsx";
 import {Switch} from "@/shared/components/ui/switch.tsx";
 import {RequestsListTable} from "@/features/Requests/RequestsListTable";
-import React, {useState} from "react";
-import {RequestType} from "@/shared/store/slices/requestsSlice/types.ts";
+import {useState} from "react";
 import {
     Dialog,
     DialogClose,
@@ -25,10 +24,9 @@ import {
 
 type PType = {
     activeType: string
-    data: null| RequestType[]
 }
 
-export const RequestsListWidget  = ({activeType, data}:PType) => {
+export const RequestsListWidget  = ({activeType}:PType) => {
     const [fieldChecked, setFieldChecked] = useState<boolean>(false);
     return (
         <>
@@ -152,7 +150,7 @@ export const RequestsListWidget  = ({activeType, data}:PType) => {
                 />
                 <p>В работе</p>
             </div>
-            <RequestsListTable data={data} type={activeType}/>
+            <RequestsListTable type={activeType}/>
         </>
     );
 }

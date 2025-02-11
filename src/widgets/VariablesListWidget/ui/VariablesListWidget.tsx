@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 //import styles from "./VariablesPage.module.css";
 import { Input } from "@/shared/components/ui/input";
 import { Button } from "@/shared/components/ui/button";
@@ -8,7 +8,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -31,7 +30,20 @@ export const VariablesListWidget = () => {
         />
 
         <Dialog >
-          <DialogTrigger><Button variant="default">Новая переменная</Button></DialogTrigger>
+          <DialogTrigger
+              style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  background: '#111111',
+                  width: 'fit-content',
+                  color: 'white',
+                  whiteSpace: 'nowrap',
+                  borderRadius: '6px',
+                  padding: '0 23px',
+                  fontSize: '14px',
+              }}
+          >Новая переменная</DialogTrigger>
           <DialogContent style={{width:'618px'}}>
             <DialogHeader>
               <DialogTitle>Создание новой метрики</DialogTitle>

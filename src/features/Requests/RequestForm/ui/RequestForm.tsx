@@ -1,27 +1,33 @@
 import { useFormik } from 'formik';
 import {Input} from "@/shared/components/ui/input.tsx";
 import {Textarea} from "@/shared/components/ui/textarea.tsx";
-import React from "react";
+import {Button} from "@/shared/components/ui/button.tsx";
+import {RequestType} from "@/shared/store/slices/requestsSlice/types.ts";
 
+type FormProps = {
+    data: RequestType
+}
 
-export const RequestForm = () => {
+export const RequestForm = ({data}:FormProps) => {
     const formik = useFormik({
         initialValues: {
-            requestNum: '',
-            createDate: '',
-            changeDate: '',
-            status: '',
-            type: '',
-            point: '',
-            owner: '',
-            user: '',
-            userComment: '',
-            ownerComment: '',
+            requestNum: data.requestNumber || '-',
+            createDate: data.createDate || '-',
+            changeDate: data.changeDate || '-',
+            status: data.status || '-',
+            type: data.type || '-',
+            metric: data.metric || '-',
+            owner: data.owner || '-',
+            user: data.user || '-',
+            userComment: data.userComment || '',
+            ownerComment: data.ownerComment || '',
         },
+        enableReinitialize: true,
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
         },
     });
+
     return (
         <form onSubmit={formik.handleSubmit} style={{
             display: 'flex',
@@ -110,12 +116,12 @@ export const RequestForm = () => {
             }}>
                 <label style={{fontSize: "14px", minWidth: "180px", fontWeight: '500'}} htmlFor="email">Объект доступа</label>
                 <Input
-                    id="point"
-                    name="point"
-                    type="email"
+                    id="metric"
+                    name="metric"
+                    type="text"
                     className="w-[367px]"
                     onChange={formik.handleChange}
-                    value={formik.values.point}
+                    value={formik.values.metric}
                 />
             </div>
             <div style={{
@@ -148,7 +154,6 @@ export const RequestForm = () => {
                     value={formik.values.user}
                 />
             </div>
-            <button type="submit">Submit</button>
             <div style={{
                 display: 'flex',
                 gap: '26px',
@@ -156,9 +161,13 @@ export const RequestForm = () => {
             }}>
                 <div style={{fontSize: "14px", minWidth: "180px", fontWeight: '500'}}>Комментарий<br/> инициатора</div>
                 <Textarea
+                    id="ownerComment"
+                    name="ownerComment"
                     style={{minHeight: "108px"}}
                     className="w-[367px]"
                     placeholder={'укажите комментарий при необходимости'}
+                    value={formik.values.ownerComment}
+                    onChange={formik.handleChange}
                 ></Textarea>
             </div>
             <div style={{
@@ -168,10 +177,18 @@ export const RequestForm = () => {
             }}>
                 <div style={{fontSize: "14px", minWidth: "180px", fontWeight: '500'}}>Комментарий<br/> согласующего</div>
                 <Textarea
+                    id="userComment"
+                    name="userComment"
                     style={{minHeight: "108px"}}
                     className="w-[367px]"
                     placeholder={'укажите комментарий при необходимости'}
+                    value={formik.values.userComment}
+                    onChange={formik.handleChange}
                 ></Textarea>
+            </div>
+            <div style={{display: 'flex', alignItems: 'center', gap: '26px'}}>
+                <Button variant={'default'} >Октлонить</Button>
+                <Button variant={'destructive'} >Согласовать</Button>
             </div>
         </form>
     );

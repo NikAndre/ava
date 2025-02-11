@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {
   setActiveRequest,
   addRequestToCheckedList,
@@ -26,10 +26,14 @@ import {
 import styles from "./RequestsListTable.module.css";
 import {RequestType} from "@/shared/store/slices/requestsSlice/types.ts";
 
+type TableProps = {
+  type: string;
+}
+
 export function RequestsListTable({
   type = 'requests',
-  data
-}) {
+}: TableProps): JSX.Element {
+  const requestsList = useSelector((store) => store.requests.requestsList);
   const dispatch = useDispatch();
   const columns: ColumnDef<RequestType>[] = [
     {
@@ -73,7 +77,7 @@ export function RequestsListTable({
   ];
 
   const table = useReactTable({
-    data: data,
+    data: requestsList,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),

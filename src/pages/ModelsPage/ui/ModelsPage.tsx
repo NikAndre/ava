@@ -12,6 +12,7 @@ import {
 import { SquareX } from "lucide-react";
 import { ModelsListWidget } from "@/widgets/ModelsListWidget/ui/ModelsListWidget";
 import { ModelWidget } from "@/widgets/ModelWidget/ui/ModelWidget";
+import {ModelType} from "@/shared/store/slices/modelsSlice/types.ts";
 
 const ModelsPage: FC = () => {
   const activeModel = useSelector((store) => store.models.activeModel);
@@ -29,7 +30,7 @@ const ModelsPage: FC = () => {
     dispatch(clearActiveModel());
   };
 
-  const handleCloseBtnClick = (event, elem) => {
+  const handleCloseBtnClick = (event:MouseEvent, elem) => {
     event.stopPropagation();
     if (elem.id === activeModel?.id) {
       dispatch(clearActiveModel());
@@ -56,7 +57,7 @@ const ModelsPage: FC = () => {
             <TabsTrigger onClick={handleAllTabClick} value="all">
               Все модели
             </TabsTrigger>
-            {checkedModels?.map((elem) => {
+            {checkedModels?.map((elem: ModelType) => {
               return (
                 <TabsTrigger
                   onClick={() => handleTabClick(elem)}

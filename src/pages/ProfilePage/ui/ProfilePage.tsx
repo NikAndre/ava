@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import styles from "./ProfilePage.module.css";
 import { HeaderWidget } from "@/widgets/HeaderWidget";
 import {Input} from "@/shared/components/ui/input";

@@ -1,0 +1,1 @@
+export {StatisticBarChart} from './ui/StatisticBarChart.tsx'
