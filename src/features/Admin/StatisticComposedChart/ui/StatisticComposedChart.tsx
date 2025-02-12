@@ -38,7 +38,7 @@ export const StatisticComposedChart = ({data}) => {
                 }}
             >
                 <CartesianGrid stroke="#f5f5f5" />
-                <XAxis  axisLine={false} tickLine={false} scale="band" />
+                <XAxis  dataKey={'name'}  axisLine={false} tickLine={false} />
                 <YAxis  dataKey={'pv'}  axisLine={false} tickLine={false}/>
                 <YAxis  dataKey={'uv'}   axisLine={false} tickLine={false}/>
                 <YAxis yAxisId={1} tick={false} domain={['dataMin', 'dataMax']} orientation={'right'} dataKey={'amt'}  axisLine={false} tickLine={false}/>

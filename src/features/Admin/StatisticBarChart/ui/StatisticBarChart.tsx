@@ -23,7 +23,7 @@ export const StatisticBarChart = ({data}) => {
                 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis  axisLine={false} tickLine={false} dataKey={'name'} scale="band" />
+                <XAxis  axisLine={false} tickLine={false} dataKey={'name'}  />
                 <YAxis   axisLine={false} tickLine={false}/>
                 <Tooltip />
                 <Bar barSize={20} dataKey="pv" fill="#64748b"  />

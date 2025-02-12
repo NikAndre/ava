@@ -1,6 +1,6 @@
 .page_wrapper {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   padding: 24px 5px 14px;
 }
 

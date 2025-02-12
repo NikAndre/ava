@@ -1,76 +1,75 @@
-import {StatisticTable} from "@/features/Admin/StatisticTable";
 import {StatisticComposedChart} from "@/features/Admin/StatisticComposedChart";
 import {StatisticBarChart} from "@/features/Admin/StatisticBarChart";
 
 const data =[
   {
-    name: 'Page 1',
+    name: 'Jan',
     uv: 4000,
     pv: 2400,
     amt: 20,
   },
   {
-    name: 'Page 2',
+    name: 'Feb',
     uv: 3000,
     pv: 1398,
     amt: 10,
   },
   {
-    name: 'Page 3',
+    name: 'Mar',
     uv: 2000,
     pv: 9800,
     amt: 100,
   },
   {
-    name: 'Page 4',
+    name: 'Apr',
     uv: 4000,
     pv: 2400,
     amt: 50,
   },
   {
-    name: 'Page 5',
+    name: 'May',
     uv: 3000,
     pv: 1398,
     amt: 40,
   },
   {
-    name: 'Page 6',
+    name: 'June',
     uv: 2000,
     pv: 9800,
     amt: 36,
   },
   {
-    name: 'Page 7',
+    name: 'Jul',
     uv: 4000,
     pv: 2400,
     amt: 95,
   },
   {
-    name: 'Page 8',
+    name: 'Aug',
     uv: 3000,
     pv: 1398,
     amt: 80,
   },
   {
-    name: 'Page 9',
+    name: 'Sept',
     uv: 2000,
     pv: 9800,
     amt: 70,
   },
   {
-    name: 'Page 10',
+    name: 'Oct',
     uv: 4000,
     pv: 2400,
     amt: 60,
   },
   {
-    name: 'Page 11',
+    name: 'Nov',
     uv: 3000,
     pv: 1398,
     amt: 55,
   },
   {
-    name: 'Page 12',
+    name: 'Dec',
     uv: 2000,
     pv: 9800,
     amt: 45,
