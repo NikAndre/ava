@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { VariableSliceType} from "@/shared/store/slices/variablesSlice/types.ts";
+import { VariableSliceType } from "@/shared/store/slices/variablesSlice/types.ts";
 
 const initialState: VariableSliceType = {
   variablesList: [],
@@ -49,7 +49,7 @@ export const variablesSlice = createSlice({
     },
     setActiveTab: (state, action) => {
       const isInChecked = state.checkedVariablesList?.find(
-        ({name}) => name !== action.payload.name,
+        ({ name }) => name !== action.payload.name,
       );
 
       if (action.payload.name && isInChecked) {

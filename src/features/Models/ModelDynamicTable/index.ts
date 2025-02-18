@@ -1,1 +1,1 @@
-export {ModelDynamicTable} from './ui/ModelDynamicTable'
+export { ModelDynamicTable } from "./ui/ModelDynamicTable";

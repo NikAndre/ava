@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {ModelSliceType} from "@/shared/store/slices/modelsSlice/types.ts";
+import { ModelSliceType } from "@/shared/store/slices/modelsSlice/types.ts";
 
 const initialState: ModelSliceType = {
   modelsList: [],
@@ -29,7 +29,7 @@ export const modelsSlice = createSlice({
     addModelToCheckedList: (state, action) => {
       if (action.payload.model.id) {
         const isInList = [...state.checkedModelsList].find(
-          ({id}) => id === action.payload.model.id,
+          ({ id }) => id === action.payload.model.id,
         );
         const newModelsList = isInList
           ? [...state.checkedModelsList]
@@ -49,10 +49,10 @@ export const modelsSlice = createSlice({
       state.activeModel = null;
     },
     setActiveTab: (state, action) => {
-      const { modelName } = action.payload
+      const { modelName } = action.payload;
 
       const isInChecked = state.checkedModelsList?.find(
-        ({ }) => name !== modelName,
+        ({}) => name !== modelName,
       );
 
       if (modelName && isInChecked) {

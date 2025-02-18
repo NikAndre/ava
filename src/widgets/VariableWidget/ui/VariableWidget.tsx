@@ -8,7 +8,7 @@ import { DataTab } from "@/entities/Variable/ui/DataTab";
 import { DependenciesTab } from "@/entities/Variable/ui/DependenciesTab";
 import { PermissionsTab } from "@/entities/Variable/ui/PermissionsTab/ui/PermissionTab";
 import { HistoryTab } from "@/entities/Variable/ui/HistoryTab";
-import {MonitoringTab} from "@/entities/Variable/ui/MonitoringTab";
+import { MonitoringTab } from "@/entities/Variable/ui/MonitoringTab";
 
 export const VariableWidget = () => {
   const [activeTab, setActiveTab] = useState<string>("analysis");

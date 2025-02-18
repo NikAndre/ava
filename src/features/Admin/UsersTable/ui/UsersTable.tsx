@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useDispatch } from "react-redux";
 import { setActiveVariable } from "@/shared/store/slices/variablesSlice";
-import styles from "./UsersTable.module.css"
+import styles from "./UsersTable.module.css";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -22,19 +22,19 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/components/ui/table";
-import {Checkbox} from "@/shared/components/ui/checkbox";
+import { Checkbox } from "@/shared/components/ui/checkbox";
 import style from "@/features/Models/ModelAnaliticalTable/ui/ModelDataTable.module.css";
 
 const data: UsersType[] = [
   {
-    id: 'sadsadsad',
-    userName: 'Денис Зайцев',
-    userLogin: 'denis.zaitsev@icloud.com',
-    lastActivity: '12.12.2024 20:20',
+    id: "sadsadsad",
+    userName: "Денис Зайцев",
+    userLogin: "denis.zaitsev@icloud.com",
+    lastActivity: "12.12.2024 20:20",
     isAdmin: true,
     metricsAmount: 2,
-    modelsAmount: 4
-  }
+    modelsAmount: 4,
+  },
 ];
 
 export type UsersType = {
@@ -47,7 +47,7 @@ export type UsersType = {
   modelsAmount: number;
 };
 
-export function UsersTable () {
+export function UsersTable() {
   const dispatch = useDispatch();
   const columns: ColumnDef<UsersType>[] = [
     {
@@ -96,7 +96,6 @@ export function UsersTable () {
         </div>
       ),
     },
-
   ];
 
   const [rowSelection, setRowSelection] = React.useState({});
@@ -127,9 +126,9 @@ export function UsersTable () {
                       {header.isPlaceholder
                         ? null
                         : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext(),
-                        )}
+                            header.column.columnDef.header,
+                            header.getContext(),
+                          )}
                     </TableHead>
                   );
                 })}
@@ -149,7 +148,8 @@ export function UsersTable () {
                   {row.getVisibleCells().map((cell) => (
                     <TableCell
                       key={cell.id}
-                      className={`border` + " " + styles["cell"]}>
+                      className={`border` + " " + styles["cell"]}
+                    >
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext(),

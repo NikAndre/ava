@@ -28,7 +28,7 @@ import {
   TableRow,
 } from "@/shared/components/ui/table";
 import { useEffect } from "react";
-import {Checkbox} from "@/shared/components/ui/checkbox";
+import { Checkbox } from "@/shared/components/ui/checkbox";
 
 const data: ScenariosType[] = [
   {
@@ -38,14 +38,14 @@ const data: ScenariosType[] = [
     creationDate: "01.01.2024",
     startDate: "01.01.2024",
     endDate: "01.01.2024",
-    isEditable: true
-  }
+    isEditable: true,
+  },
 ];
 
 export type ScenariosType = {
-  id: string,
+  id: string;
   scenarioName: string;
-  type: "автоматический" | 'ручной';
+  type: "автоматический" | "ручной";
   creationDate: string;
   startDate: string;
   endDate: string;
@@ -87,7 +87,9 @@ export function ScenariosTable() {
     },
     {
       accessorKey: "isEditable",
-      header: () => <div className="text-primary">Открыт на редактирование</div>,
+      header: () => (
+        <div className="text-primary">Открыт на редактирование</div>
+      ),
       cell: ({ row }) => (
         <div
           style={{

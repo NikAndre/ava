@@ -1,6 +1,5 @@
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 import {
-
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
@@ -20,182 +19,185 @@ const chartConfig = {
 const data = [
   {
     desktop1: 100,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 85,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 76,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 55,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 115,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 105,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 120,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 101,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 55,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 100,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 85,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 76,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 55,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 115,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 105,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 120,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 101,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 55,
-    date: '01.01.2024'
-  },  {
+    date: "01.01.2024",
+  },
+  {
     desktop1: 100,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 85,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 76,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 55,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 115,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 105,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 120,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 101,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 55,
-    date: '01.01.2024'
-  },  {
+    date: "01.01.2024",
+  },
+  {
     desktop1: 100,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 85,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 76,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 55,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 115,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 105,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 120,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 101,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 55,
-    date: '01.01.2024'
-  },  {
+    date: "01.01.2024",
+  },
+  {
     desktop1: 100,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 85,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 76,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 55,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 115,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 105,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 120,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 101,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
   {
     desktop1: 55,
-    date: '01.01.2024'
+    date: "01.01.2024",
   },
-]
+];
 
 export function VariableMonitoringChart() {
   return (
@@ -214,13 +216,13 @@ export function VariableMonitoringChart() {
           style={{ width: "100%" }}
         >
           <CartesianGrid vertical={false} />
-          <YAxis dataKey="desktop1" domain={['dataMin - 10', 'dataMax + 10']}/>
+          <YAxis dataKey="desktop1" domain={["dataMin - 10", "dataMax + 10"]} />
           <XAxis
             dataKey="date"
             angle={-90}
             tickMargin={30}
             height={100}
-            style={{marginTop: '150px'}}
+            style={{ marginTop: "150px" }}
           />
           <ChartTooltip
             cursor={false}

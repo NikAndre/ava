@@ -18,10 +18,10 @@
 
 .input_wrapper {
   display: flex;
-  gap: 13.5%
+  gap: 13.5%;
 }
 
-.input_wrapper p{
+.input_wrapper p {
   width: 30%;
   size: 14px;
   font-weight: 500;

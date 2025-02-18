@@ -1,1 +1,1 @@
-export { RequestsListWidget } from './ui/RequestsListWidget.tsx'
+export { RequestsListWidget } from "./ui/RequestsListWidget.tsx";

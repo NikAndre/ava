@@ -28,7 +28,7 @@ import {
   TableRow,
 } from "@/shared/components/ui/table";
 import { useEffect } from "react";
-import {ModelType} from "@/shared/store/slices/modelsSlice/types.ts";
+import { ModelType } from "@/shared/store/slices/modelsSlice/types.ts";
 
 const data: ModelType[] = [
   {
@@ -207,7 +207,6 @@ const data: ModelType[] = [
   },
 ];
 
-
 export function ModelsListTable() {
   const columns: ColumnDef<ModelType>[] = [
     {
@@ -301,7 +300,9 @@ export function ModelsListTable() {
                   onClick={() => {
                     dispatch(setActiveModel({ id: row.original.id }));
                     dispatch(addModelToCheckedList({ model: row.original }));
-                    dispatch(setActiveTab({ modelName: row.original.modelName }));
+                    dispatch(
+                      setActiveTab({ modelName: row.original.modelName }),
+                    );
                   }}
                   style={{ cursor: "pointer" }}
                 >

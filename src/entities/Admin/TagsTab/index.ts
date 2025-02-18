@@ -1,1 +1,1 @@
-export { TagsTab } from "./ui/TagsTab"
+export { TagsTab } from "./ui/TagsTab";

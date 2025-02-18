@@ -1,1 +1,1 @@
-export { UsersTab } from "./ui/UsersTab"
+export { UsersTab } from "./ui/UsersTab";

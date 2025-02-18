@@ -1,23 +1,18 @@
 .cell:nth-child(1) {
-    width: 14%;
-
+  width: 14%;
 }
 .cell:nth-child(2) {
-    width: 14.75%;
-
+  width: 14.75%;
 }
 .cell:nth-child(3) {
-    width: 21.5%;
-
+  width: 21.5%;
 }
 .cell:nth-child(4) {
-    width: 15.4%;
-
+  width: 15.4%;
 }
 .cell:nth-child(5) {
-    width: 15.4%;
-
+  width: 15.4%;
 }
 .cell:nth-child(6) {
-    width: auto;
+  width: auto;
 }

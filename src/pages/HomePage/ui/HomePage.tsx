@@ -15,9 +15,7 @@ const HomePage: FC = () => {
           gap: "20px",
           padding: "30px 34px",
         }}
-      >
-
-      </main>
+      ></main>
     </div>
   );
 };

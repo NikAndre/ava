@@ -7,7 +7,7 @@ export const store = configureStore({
   reducer: {
     variables: variablesReducer,
     models: modelsReducer,
-    requests: requestsReducer
+    requests: requestsReducer,
   } /*,
   middleware: ((getDefaultMiddleware) => {
     getDefaultMiddleware({

@@ -34,7 +34,7 @@ const data: VariableType[] = [
   {
     id: "1",
     variableName: "paid base EOP",
-    tags: ['base', 'EOP'],
+    tags: ["base", "EOP"],
     status: "опубликована",
     date: "Август 2024",
     username: "Vasya",
@@ -86,7 +86,7 @@ const data: VariableType[] = [
   {
     id: "2",
     variableName: "revenue product cloud",
-    tags: ['revenue', 'cloud'],
+    tags: ["revenue", "cloud"],
     status: "опубликована",
     date: "Сентябрь 2024",
     username: "Vasya",
@@ -199,7 +199,7 @@ export function VariablesDataTable() {
     {
       accessorKey: "tags",
       header: () => <div className="text-primary">Теги</div>,
-      cell: ({ row }) => <div>{row.getValue("tags")?.join(', ')}</div>,
+      cell: ({ row }) => <div>{row.getValue("tags")?.join(", ")}</div>,
     },
     {
       accessorKey: "date",

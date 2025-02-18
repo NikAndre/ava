@@ -1,7 +1,7 @@
-import React, {FC} from "react";
+import React, { FC } from "react";
 import styles from "./AdminPage.module.css";
 import { HeaderWidget } from "@/widgets/HeaderWidget";
-import {AdminWidget} from "@/widgets/AdminWidget";
+import { AdminWidget } from "@/widgets/AdminWidget";
 
 const AdminPage: FC = () => {
   return (

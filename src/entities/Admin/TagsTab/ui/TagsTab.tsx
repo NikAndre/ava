@@ -1,16 +1,16 @@
 import React from "react";
-import {Input} from "@/shared/components/ui/input";
-import {Button} from "@/shared/components/ui/button";
-import {TagsTable} from "@/features/Admin/TagsTable";
+import { Input } from "@/shared/components/ui/input";
+import { Button } from "@/shared/components/ui/button";
+import { TagsTable } from "@/features/Admin/TagsTable";
 
 export const TagsTab = () => {
   return (
     <div
       style={{
-        maxWidth:'100%',
-        display: 'flex',
-        flexDirection:'column',
-        gap: '24px'
+        maxWidth: "100%",
+        display: "flex",
+        flexDirection: "column",
+        gap: "24px",
       }}
     >
       <div
@@ -19,15 +19,12 @@ export const TagsTab = () => {
           gap: "5px",
         }}
       >
-        <Input
-          type={"text"}
-          placeholder={"Введите текст для поиска"}
-        />
+        <Input type={"text"} placeholder={"Введите текст для поиска"} />
         <Button variant="default">Новый тег</Button>
       </div>
-      <div style={{maxWidth: '57%'}}>
+      <div style={{ maxWidth: "57%" }}>
         <TagsTable />
       </div>
     </div>
-  )
-}
+  );
+};

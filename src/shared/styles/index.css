@@ -21,8 +21,8 @@
     --accent-foreground: 220.9 39.3% 11%;
     --destructive: 3 100% 59%;
     --destructive-foreground: 210 20% 98%;
-    --border:  213 27% 84;
-    --input:  213 27% 84%;
+    --border: 213 27% 84;
+    --input: 213 27% 84%;
     --ring: 224 71.4% 4.1%;
     --radius: 0.5rem;
     --chart-1: 12 76% 61%;
@@ -90,7 +90,6 @@ body {
   place-items: center;
   min-width: 100%;
   min-height: 100vh;
-
 }
 
 h1 {

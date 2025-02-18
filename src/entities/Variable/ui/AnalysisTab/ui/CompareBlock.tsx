@@ -9,19 +9,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/shared/components/ui/select";
-import {useState} from "react";
-import {VariableCompareLineChart} from "@/features/Variables/VariableCompareLineChart";
+import { useState } from "react";
+import { VariableCompareLineChart } from "@/features/Variables/VariableCompareLineChart";
 
 export const CompareBlock = () => {
-    const [chartType, setType] = useState("line");
-    console.log(chartType)
+  const [chartType, setType] = useState("line");
+  console.log(chartType);
   return (
     <div style={{ display: "flex", gap: "20px" }}>
-        {
-            chartType === 'perc'
-            ? <VariableCompareLineChart />
-            : <VariableAnaliticalBarChart />
-        }
+      {chartType === "perc" ? (
+        <VariableCompareLineChart />
+      ) : (
+        <VariableAnaliticalBarChart />
+      )}
       <Card style={{ width: "15%" }}>
         <CardContent
           style={{

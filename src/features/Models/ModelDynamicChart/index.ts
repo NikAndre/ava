@@ -1,1 +1,1 @@
-export {ModelDynamicChart} from './ui/ModelDynamicChart'
+export { ModelDynamicChart } from "./ui/ModelDynamicChart";

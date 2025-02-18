@@ -1,1 +1,1 @@
-export {DynamicTab} from './ui/DynamicTab'
+export { DynamicTab } from "./ui/DynamicTab";

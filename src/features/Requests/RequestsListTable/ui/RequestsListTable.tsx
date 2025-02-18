@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   setActiveRequest,
   addRequestToCheckedList,
@@ -24,14 +24,14 @@ import {
   TableRow,
 } from "@/shared/components/ui/table";
 import styles from "./RequestsListTable.module.css";
-import {RequestType} from "@/shared/store/slices/requestsSlice/types.ts";
+import { RequestType } from "@/shared/store/slices/requestsSlice/types.ts";
 
 type TableProps = {
   type: string;
-}
+};
 
 export function RequestsListTable({
-  type = 'requests',
+  type = "requests",
 }: TableProps): JSX.Element {
   const requestsList = useSelector((store) => store.requests.requestsList);
   const dispatch = useDispatch();
@@ -68,10 +68,18 @@ export function RequestsListTable({
       },
     },
     {
-      accessorKey: type === 'requests' ? 'user' : 'owner',
-      header: () => <div className="text-primary">{ type === 'requests' ? 'Согласующий' : 'Инициатор' }</div>,
+      accessorKey: type === "requests" ? "user" : "owner",
+      header: () => (
+        <div className="text-primary">
+          {type === "requests" ? "Согласующий" : "Инициатор"}
+        </div>
+      ),
       cell: ({ row }) => {
-        return <div>{ type === 'requests' ? row.getValue("user") : row.getValue("owner") }</div>;
+        return (
+          <div>
+            {type === "requests" ? row.getValue("user") : row.getValue("owner")}
+          </div>
+        );
       },
     },
   ];
@@ -115,13 +123,20 @@ export function RequestsListTable({
                   data-state={row.getIsSelected() && "selected"}
                   onClick={() => {
                     dispatch(setActiveRequest({ id: row.original.id }));
-                    dispatch(addRequestToCheckedList({ request: row.original }));
-                    dispatch(setActiveTab({ name: row.original.requestNumber }));
+                    dispatch(
+                      addRequestToCheckedList({ request: row.original }),
+                    );
+                    dispatch(
+                      setActiveTab({ name: row.original.requestNumber }),
+                    );
                   }}
                   style={{ cursor: "pointer" }}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id} className={`border` + " " + styles["cell"]}>
+                    <TableCell
+                      key={cell.id}
+                      className={`border` + " " + styles["cell"]}
+                    >
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext(),

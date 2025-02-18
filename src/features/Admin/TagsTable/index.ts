@@ -1,1 +1,1 @@
-export { TagsTable } from "./ui/TagsTable"
+export { TagsTable } from "./ui/TagsTable";

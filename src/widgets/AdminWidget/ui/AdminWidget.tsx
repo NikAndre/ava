@@ -1,9 +1,9 @@
 import styles from "@/pages/AdminPage/ui/AdminPage.module.css";
-import {Tabs, TabsList, TabsTrigger} from "@/shared/components/ui/tabs";
-import React, {useState} from "react";
-import {UsersTab} from "@/entities/Admin/UsersTab";
-import {TagsTab} from "@/entities/Admin/TagsTab";
-import {StatisticTab} from "@/entities/Admin/StatisticTab/ui/StatisticTab.tsx";
+import { Tabs, TabsList, TabsTrigger } from "@/shared/components/ui/tabs";
+import React, { useState } from "react";
+import { UsersTab } from "@/entities/Admin/UsersTab";
+import { TagsTab } from "@/entities/Admin/TagsTab";
+import { StatisticTab } from "@/entities/Admin/StatisticTab/ui/StatisticTab.tsx";
 
 export const AdminWidget = () => {
   const [activeTab, setActiveTab] = useState<string>("stats");
@@ -33,10 +33,9 @@ export const AdminWidget = () => {
         </TabsList>
       </Tabs>
 
-      { activeTab === 'users' && <UsersTab />}
-      { activeTab === 'tags' && <TagsTab />}
-      { activeTab === 'stats' && <StatisticTab />}
-
+      {activeTab === "users" && <UsersTab />}
+      {activeTab === "tags" && <TagsTab />}
+      {activeTab === "stats" && <StatisticTab />}
     </main>
-  )
-}
+  );
+};

@@ -5,7 +5,7 @@ import { AnalysisTab } from "@/entities/Model/ui/AnalysisTab";
 import { InformationTab } from "@/entities/Model/ui/InformationTab";
 import { OptionsTab } from "@/entities/Model/ui/OptionsTab/ui/OptionsTab";
 import { PermissionsTab } from "@/entities/Model/ui/PermissionsTab";
-import {DynamicTab} from "@/entities/Model/ui/DynamicTab";
+import { DynamicTab } from "@/entities/Model/ui/DynamicTab";
 
 export const ModelWidget = () => {
   const [activeTab, setActiveTab] = useState<string>("analysis");

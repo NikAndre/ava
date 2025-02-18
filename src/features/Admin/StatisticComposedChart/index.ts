@@ -1,1 +1,1 @@
-export {StatisticComposedChart} from './ui/StatisticComposedChart'
+export { StatisticComposedChart } from "./ui/StatisticComposedChart";

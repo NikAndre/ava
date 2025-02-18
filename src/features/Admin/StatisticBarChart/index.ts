@@ -1,1 +1,1 @@
-export {StatisticBarChart} from './ui/StatisticBarChart.tsx'
+export { StatisticBarChart } from "./ui/StatisticBarChart.tsx";

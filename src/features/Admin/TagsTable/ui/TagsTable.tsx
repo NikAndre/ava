@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useDispatch } from "react-redux";
 import { setActiveVariable } from "@/shared/store/slices/variablesSlice";
-import styles from "./TagsTable.module.css"
+import styles from "./TagsTable.module.css";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -22,15 +22,15 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/components/ui/table";
-import {Checkbox} from "@/shared/components/ui/checkbox";
+import { Checkbox } from "@/shared/components/ui/checkbox";
 import style from "@/features/Models/ModelAnaliticalTable/ui/ModelDataTable.module.css";
 
 const data: UsersType[] = [
   {
-    id: 'sadsadsad',
-    tagName: 'company',
-    usage: 4
-  }
+    id: "sadsadsad",
+    tagName: "company",
+    usage: 4,
+  },
 ];
 
 export type UsersType = {
@@ -39,17 +39,25 @@ export type UsersType = {
   usage: number;
 };
 
-export function TagsTable () {
+export function TagsTable() {
   const dispatch = useDispatch();
   const columns: ColumnDef<UsersType>[] = [
     {
       accessorKey: "tagName",
-      header: () => <div align={'center'} className="text-primary">Тег</div>,
+      header: () => (
+        <div align={"center"} className="text-primary">
+          Тег
+        </div>
+      ),
       cell: ({ row }) => <div>{row.getValue("tagName")}</div>,
     },
     {
       accessorKey: "usage",
-      header: () => <div align={'center'} className="text-primary">Пользователь</div>,
+      header: () => (
+        <div align={"center"} className="text-primary">
+          Пользователь
+        </div>
+      ),
       cell: ({ row }) => <div>{row.getValue("usage")}</div>,
     },
   ];
@@ -82,9 +90,9 @@ export function TagsTable () {
                       {header.isPlaceholder
                         ? null
                         : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext(),
-                        )}
+                            header.column.columnDef.header,
+                            header.getContext(),
+                          )}
                     </TableHead>
                   );
                 })}
@@ -104,7 +112,8 @@ export function TagsTable () {
                   {row.getVisibleCells().map((cell) => (
                     <TableCell
                       key={cell.id}
-                      className={`border` + " " + styles["cell"]}>
+                      className={`border` + " " + styles["cell"]}
+                    >
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext(),

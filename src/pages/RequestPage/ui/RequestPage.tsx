@@ -1,28 +1,29 @@
-import {FC, MouseEvent, useState} from "react";
+import { FC, MouseEvent, useState } from "react";
 import styles from "./RequestPage.module.css";
 import { HeaderWidget } from "@/widgets/HeaderWidget";
-import {Tabs, TabsList, TabsTrigger} from "@/shared/components/ui/tabs";
-import {SquareX} from "lucide-react";
-import {useDispatch, useSelector} from "react-redux";
+import { Tabs, TabsList, TabsTrigger } from "@/shared/components/ui/tabs";
+import { SquareX } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   setActiveRequest,
   clearActiveRequest,
   setActiveTab,
   removeRequestFromCheckedList,
 } from "@/shared/store/slices/requestsSlice";
-import {RequestsListWidget} from "@/widgets/RequestsListWidget";
-import {RequestWidget} from "@/widgets/RequestWidget";
-import {RequestType} from "@/shared/store/slices/requestsSlice/types.ts";
+import { RequestsListWidget } from "@/widgets/RequestsListWidget";
+import { RequestWidget } from "@/widgets/RequestWidget";
+import { RequestType } from "@/shared/store/slices/requestsSlice/types.ts";
 
 const RequestPage: FC = () => {
-  const [activeType, setActiveType] = useState<string>('requests');
+  const [activeType, setActiveType] = useState<string>("requests");
   const activeRequest = useSelector((store) => store.requests.activeRequest);
-  const checkedRequests = useSelector((store) => store.requests.checkedRequestList);
+  const checkedRequests = useSelector(
+    (store) => store.requests.checkedRequestList,
+  );
   const activeTab = useSelector((store) => store.requests.activeTab);
   const dispatch = useDispatch();
 
-
-  const handleTabClick = (elem:RequestType) => {
+  const handleTabClick = (elem: RequestType) => {
     dispatch(setActiveRequest({ id: elem.id }));
     dispatch(setActiveTab({ name: elem.requestNumber }));
   };
@@ -32,7 +33,7 @@ const RequestPage: FC = () => {
     dispatch(clearActiveRequest());
   };
 
-  const handleCloseBtnClick = (event:MouseEvent, elem:RequestType) => {
+  const handleCloseBtnClick = (event: MouseEvent, elem: RequestType) => {
     event.stopPropagation();
     if (elem.id === activeRequest?.id) {
       dispatch(clearActiveRequest());
@@ -41,8 +42,7 @@ const RequestPage: FC = () => {
     dispatch(removeRequestFromCheckedList({ id: elem.id }));
   };
 
-
-  console.log(activeRequest)
+  console.log(activeRequest);
   return (
     <div className={styles["page_wrapper"]}>
       <HeaderWidget />
@@ -56,14 +56,15 @@ const RequestPage: FC = () => {
           padding: "30px 34px",
         }}
       >
-        <Tabs defaultValue={"requests"} value={activeType} onValueChange={setActiveType} className="w-[400px]">
+        <Tabs
+          defaultValue={"requests"}
+          value={activeType}
+          onValueChange={setActiveType}
+          className="w-[400px]"
+        >
           <TabsList style={{ gap: "10px" }}>
-            <TabsTrigger value="requests">
-              Мои заявки
-            </TabsTrigger>
-            <TabsTrigger value="coordination">
-              Согласования
-            </TabsTrigger>
+            <TabsTrigger value="requests">Мои заявки</TabsTrigger>
+            <TabsTrigger value="coordination">Согласования</TabsTrigger>
           </TabsList>
         </Tabs>
         <Tabs defaultValue={"all"} value={activeTab} className="w-[400px]">
@@ -71,7 +72,7 @@ const RequestPage: FC = () => {
             <TabsTrigger onClick={handleAllTabClick} value="all">
               Все
             </TabsTrigger>
-            {checkedRequests?.map((elem:RequestType) => {
+            {checkedRequests?.map((elem: RequestType) => {
               return (
                 <TabsTrigger
                   onClick={() => handleTabClick(elem)}
@@ -97,9 +98,8 @@ const RequestPage: FC = () => {
             })}
           </TabsList>
         </Tabs>
-        { !activeRequest && <RequestsListWidget activeType={activeType} />}
-        { activeRequest && <RequestWidget />}
-
+        {!activeRequest && <RequestsListWidget activeType={activeType} />}
+        {activeRequest && <RequestWidget />}
       </main>
     </div>
   );

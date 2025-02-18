@@ -2,7 +2,9 @@ import {
   LINK_ADMIN,
   LINK_HOME,
   LINK_METRICS,
-  LINK_MODELS, LINK_PROFILE, LINK_REQUEST,
+  LINK_MODELS,
+  LINK_PROFILE,
+  LINK_REQUEST,
 } from "@/app/router/constants";
 //import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
