@@ -16,7 +16,7 @@ class CustomizedLabel extends PureComponent {
         const { x, y, stroke, value } = this.props;
 
         return (
-            <text x={x} y={y-10} dy={-4} fill={stroke} fontSize={14} textAnchor="middle">
+            <text x={x} y={y-10} dy={-4} fill={stroke} fontSize={14} fontWeight={500} textAnchor="middle">
                 {value + '%'}
             </text>
         );

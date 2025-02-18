@@ -8,6 +8,7 @@ import { DataTab } from "@/entities/Variable/ui/DataTab";
 import { DependenciesTab } from "@/entities/Variable/ui/DependenciesTab";
 import { PermissionsTab } from "@/entities/Variable/ui/PermissionsTab/ui/PermissionTab";
 import { HistoryTab } from "@/entities/Variable/ui/HistoryTab";
+import {MonitoringTab} from "@/entities/Variable/ui/MonitoringTab";
 
 export const VariableWidget = () => {
   const [activeTab, setActiveTab] = useState<string>("analysis");
@@ -21,6 +22,7 @@ export const VariableWidget = () => {
       >
         <TabsList style={{ gap: "10px" }}>
           <TabsTrigger value="analysis">Анализ</TabsTrigger>
+          <TabsTrigger value="monitor">Мониторинг</TabsTrigger>
           <TabsTrigger value="information">Информация</TabsTrigger>
           <TabsTrigger value="options">Настройка</TabsTrigger>
           <TabsTrigger value="data">Данные</TabsTrigger>
@@ -31,6 +33,7 @@ export const VariableWidget = () => {
       </Tabs>
 
       {activeTab === "information" && <InformationTab />}
+      {activeTab === "monitor" && <MonitoringTab />}
       {activeTab === "analysis" && <AnalysisTab />}
       {activeTab === "options" && <OptionsTab />}
       {activeTab === "data" && <DataTab />}

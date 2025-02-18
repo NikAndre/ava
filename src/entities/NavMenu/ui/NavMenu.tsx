@@ -23,7 +23,7 @@ export const NavMenu = () => {
     <NavigationMenu>
       <NavigationMenuList>
         { linksArray.map((elem) => {
-          return <MenuLink data={elem}  />
+          return <MenuLink key={elem.name} data={elem}  />
         }) }
       </NavigationMenuList>
     </NavigationMenu>

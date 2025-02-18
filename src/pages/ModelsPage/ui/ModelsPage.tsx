@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import styles from "./ModelsPage.module.css";
 import { HeaderWidget } from "@/widgets/HeaderWidget";
 import { useSelector, useDispatch } from "react-redux";
@@ -20,7 +20,7 @@ const ModelsPage: FC = () => {
   const activeTab = useSelector((store) => store.models.activeTab);
   const dispatch = useDispatch();
 
-  const handleTabClick = (elem) => {
+  const handleTabClick = (elem: ModelType) => {
     dispatch(setActiveModel({ id: elem.id }));
     dispatch(setActiveTab({ modelName: elem.modelName }));
   };
@@ -30,7 +30,7 @@ const ModelsPage: FC = () => {
     dispatch(clearActiveModel());
   };
 
-  const handleCloseBtnClick = (event:MouseEvent, elem) => {
+  const handleCloseBtnClick = (event:MouseEvent, elem: ModelType) => {
     event.stopPropagation();
     if (elem.id === activeModel?.id) {
       dispatch(clearActiveModel());
@@ -54,7 +54,7 @@ const ModelsPage: FC = () => {
       >
         <Tabs defaultValue={"all"} value={activeTab} className="w-[400px]">
           <TabsList style={{ gap: "10px" }}>
-            <TabsTrigger onClick={handleAllTabClick} value="all">
+            <TabsTrigger key={'all'} onClick={handleAllTabClick} value="all">
               Все модели
             </TabsTrigger>
             {checkedModels?.map((elem: ModelType) => {

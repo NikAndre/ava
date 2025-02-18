@@ -1,4 +1,3 @@
-import React from "react";
 import { Card, CardContent } from "@/shared/components/ui/card";
 import { VariableAnaliticalBarChart } from "@/features/Variables/VariablesAnaliticalBarChart/ui/VariablesAnaliticalBarChart";
 import {
@@ -10,11 +9,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/shared/components/ui/select";
+import {useState} from "react";
+import {VariableCompareLineChart} from "@/features/Variables/VariableCompareLineChart";
 
 export const CompareBlock = () => {
+    const [chartType, setType] = useState("line");
+    console.log(chartType)
   return (
     <div style={{ display: "flex", gap: "20px" }}>
-      <VariableAnaliticalBarChart />
+        {
+            chartType === 'perc'
+            ? <VariableCompareLineChart />
+            : <VariableAnaliticalBarChart />
+        }
       <Card style={{ width: "15%" }}>
         <CardContent
           style={{
@@ -72,7 +79,7 @@ export const CompareBlock = () => {
             }}
           >
             <p>Type</p>
-            <Select>
+            <Select value={chartType} onValueChange={(value) => setType(value)}>
               <SelectTrigger className="w-[128px]">
                 <SelectValue placeholder="Select a Type" />
               </SelectTrigger>
@@ -80,6 +87,7 @@ export const CompareBlock = () => {
                 <SelectGroup>
                   <SelectLabel>Type</SelectLabel>
                   <SelectItem value="perc">%</SelectItem>
+                  <SelectItem value="num">num</SelectItem>
                 </SelectGroup>
               </SelectContent>
             </Select>
