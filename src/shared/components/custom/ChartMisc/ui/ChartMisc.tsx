@@ -1,5 +1,3 @@
-import React from "react";
-
 export const ChartMisc = ({ name = "BU 2024", color = "#1A6B25" }) => {
   return (
     <li

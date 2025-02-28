@@ -1,0 +1,1 @@
+export {StatisticTab} from './ui/StatisticTab'

@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC } from "react";
 import styles from "./VariablesPage.module.css";
 import { HeaderWidget } from "@/widgets/HeaderWidget";
 import { useSelector, useDispatch } from "react-redux";

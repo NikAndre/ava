@@ -23,14 +23,16 @@ export const ModelWidget = () => {
           <TabsTrigger value="options">Настройка</TabsTrigger>
           <TabsTrigger value="information">Информация</TabsTrigger>
           <TabsTrigger value="permissions">Доступы</TabsTrigger>
+          <TabsTrigger value="format">Условноке форматирование</TabsTrigger>
         </TabsList>
       </Tabs>
 
-      {activeTab === "analysis" && <AnalysisTab />}
-      {activeTab === "dynamic" && <DynamicTab />}
-      {activeTab === "information" && <InformationTab />}
-      {activeTab === "options" && <OptionsTab />}
-      {activeTab === "permissions" && <PermissionsTab />}
+          {activeTab === "analysis" && <AnalysisTab />}
+          {activeTab === "dynamic" && <DynamicTab />}
+          {activeTab === "information" && <InformationTab />}
+          {activeTab === "options" && <OptionsTab />}
+          {activeTab === "permissions" && <PermissionsTab />}
+          {activeTab === "format" && <PermissionsTab />}
     </>
   );
 };

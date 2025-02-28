@@ -4,9 +4,7 @@ import { setActiveVariable } from "@/shared/store/slices/variablesSlice";
 import styles from "./TagsTable.module.css";
 import {
   ColumnDef,
-  ColumnFiltersState,
-  SortingState,
-  VisibilityState,
+
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
@@ -22,8 +20,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/components/ui/table";
-import { Checkbox } from "@/shared/components/ui/checkbox";
-import style from "@/features/Models/ModelAnaliticalTable/ui/ModelDataTable.module.css";
 
 const data: UsersType[] = [
   {

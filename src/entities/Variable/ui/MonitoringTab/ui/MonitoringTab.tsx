@@ -16,6 +16,36 @@ import {
 } from "@/shared/components/ui/card.tsx";
 import { ChartMisc } from "@/shared/components/custom/ChartMisc/ui/ChartMisc.tsx";
 import { VariableMonitoringChart } from "@/features/Variables/VariableMonitoringChart";
+import {VariableMonitoringTable} from "@/features/Variables/VariableMonitoringTable";
+
+const monthArray = {
+  id: "sadsadsadsa",
+  name: "paid base",
+  fact: {
+    dim: "млн",
+    data: {
+      jan: 12,
+      feb: 24,
+      mar: 30,
+    }
+  },
+  plan: {
+    dim: "млн",
+    data: {
+      jan: 12,
+      feb: 24,
+      mar: 30,
+    }
+  },
+  compl: {
+    dim: "%",
+    data: {
+      jan: 12,
+      feb: 24,
+      mar: 97,
+    },
+  },
+};
 
 export const MonitoringTab = () => {
   const [method, setMethod] = useState<string>();
@@ -25,7 +55,7 @@ export const MonitoringTab = () => {
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
+          gap: "10px",
         }}
       >
         <p>Type</p>
@@ -50,11 +80,15 @@ export const MonitoringTab = () => {
           </CardHeader>
           <CardContent>
             <ul>
-              <ChartMisc />
+              { Object.keys(monthArray.fact.data)?.map((elem) => <ChartMisc name={elem} />)}
             </ul>
           </CardContent>
         </Card>
       </div>
+      <div style={{ width: "fit-content" }}>
+        <VariableMonitoringTable data={ monthArray } />
+      </div>
+
     </>
   );
 };

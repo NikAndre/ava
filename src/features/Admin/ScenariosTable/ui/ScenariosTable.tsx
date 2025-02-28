@@ -1,12 +1,6 @@
 import * as React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  setVariableList,
-  setActiveVariable,
-  addVariableToCheckedList,
-  setActiveTab,
-} from "@/shared/store/slices/variablesSlice";
-import {
   ColumnDef,
   ColumnFiltersState,
   SortingState,
@@ -29,8 +23,17 @@ import {
 } from "@/shared/components/ui/table";
 import { useEffect } from "react";
 import { Checkbox } from "@/shared/components/ui/checkbox";
+import {ScenarioType} from "@/shared/store/slices/scenariosSlice/types.ts";
+import {
+  addScenarioToCheckedList,
+  setActiveScenario,
+  setScenariosList,
+  setActiveTab
+} from "@/shared/store/slices/scenariosSlice";
+import styles from './ScenariosTable.module.css'
+import {Trash2} from "lucide-react";
 
-const data: ScenariosType[] = [
+const data: ScenarioType[] = [
   {
     id: "1",
     scenarioName: "FRC 1+11",
@@ -42,22 +45,24 @@ const data: ScenariosType[] = [
   },
 ];
 
-export type ScenariosType = {
-  id: string;
-  scenarioName: string;
-  type: "автоматический" | "ручной";
-  creationDate: string;
-  startDate: string;
-  endDate: string;
-  isEditable: boolean;
-};
-
 export function ScenariosTable() {
-  const columns: ColumnDef<ScenariosType>[] = [
+  const getClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    console.log(true)
+  }
+
+  const columns: ColumnDef<ScenarioType>[] = [
     {
       accessorKey: "scenarioName",
       header: () => <div className="text-primary">Сценарий</div>,
-      cell: ({ row }) => <div>{row.getValue("scenarioName")}</div>,
+      cell: ({ row }) => {
+        return (<div className={styles['cell_hover']}>
+          {row.getValue("scenarioName")}
+          <Trash2 className={styles['cell_icon']} onClick={(e) => getClick(e)}/>
+        </div>)
+      },
     },
     {
       accessorKey: "type",
@@ -110,10 +115,10 @@ export function ScenariosTable() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setVariableList(data));
+    dispatch(setScenariosList(data));
   }, []);
 
-  const variables = useSelector((store) => store.variables.variablesList);
+  const scenarios = useSelector((store) => store.scenarios.scenariosList);
 
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -124,7 +129,7 @@ export function ScenariosTable() {
   const [rowSelection, setRowSelection] = React.useState({});
 
   const table = useReactTable({
-    data: variables,
+    data: scenarios,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -171,16 +176,16 @@ export function ScenariosTable() {
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
                   onClick={() => {
-                    dispatch(setActiveVariable({ id: row.original.id }));
+                    dispatch(setActiveScenario({ id: row.original.id }));
                     dispatch(
-                      addVariableToCheckedList({ variable: row.original }),
+                      addScenarioToCheckedList(row.original),
                     );
-                    dispatch(setActiveTab({ name: row.original.variableName }));
+                    dispatch(setActiveTab({ name: row.original.scenarioName }));
                   }}
                   style={{ cursor: "pointer" }}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id} className="border">
+                    <TableCell key={cell.id} className={`border` + " " + styles["cell"]}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext(),

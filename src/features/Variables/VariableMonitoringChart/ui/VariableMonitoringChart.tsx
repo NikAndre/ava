@@ -212,6 +212,7 @@ export function VariableMonitoringChart() {
           margin={{
             right: 12,
             top: 12,
+            left: -20
           }}
           style={{ width: "100%" }}
         >

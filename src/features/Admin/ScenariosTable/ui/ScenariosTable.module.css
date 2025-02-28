@@ -1,0 +1,34 @@
+.cell:first-child {
+    width: 21.42%;
+}
+
+.cell:nth-child(2) {
+    width: 13.26%;
+}
+.cell:nth-child(3),
+.cell:nth-child(4),
+.cell:nth-child(5) {
+    width: 14%;
+}
+
+.cell:nth-child(6) {
+    width: 23.46%;
+}
+
+tr {
+    height: 43px;
+}
+
+.cell_hover {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cell_icon {
+    display: none;
+}
+
+.cell_hover:hover .cell_icon {
+    display: block;
+}
