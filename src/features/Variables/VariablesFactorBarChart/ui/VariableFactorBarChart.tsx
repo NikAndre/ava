@@ -42,7 +42,13 @@ export function VariableFactorBarChart() {
         style={{ width: "100%", height: "100%" }}
         config={chartConfig}
       >
-        <BarChart accessibilityLayer data={chartData}>
+        <BarChart
+            accessibilityLayer
+            data={chartData}
+            margin={{
+              left: -20,
+            }}
+        >
           <CartesianGrid vertical={false} />
           <ChartTooltip
             cursor={false}

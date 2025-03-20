@@ -78,6 +78,7 @@ export function VariablesOptionChart() {
             activeDot={{
               r: 8,
             }}
+            label={{ position: "top", offset: 12 }}
           />
           <Line
             dataKey="desktop2"
@@ -93,6 +94,7 @@ export function VariablesOptionChart() {
               r: 8,
             }}
             strokeDasharray={"5 3"}
+            label={{ position: "top", offset: 12 }}
           />
         </LineChart>
       </ChartContainer>

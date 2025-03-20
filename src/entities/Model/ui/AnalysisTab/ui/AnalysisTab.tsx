@@ -52,34 +52,51 @@ export const AnalysisTab = () => {
         <PeriodModelChart />
         <Card
           style={{
+            marginLeft: "auto",
             width: "15%",
-            height: "300px",
-            paddingRight: "32px",
+            maxWidth: "232px",
+            height: "270px",
+              padding: "16px 16px"
           }}
         >
-          <CardHeader>
-            <CardTitle>Метрика</CardTitle>
+          <CardHeader style={{ marginBottom: "16px", padding: "0" }}>
+            <CardTitle >Метрика</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent style={{ padding: "0" }}>
             <ul>
               <li
                 style={{
                   display: "flex",
+                  width: "100%",
                   alignItems: "center",
                   justifyContent: "space-between",
+                    cursor: "pointer",
                 }}
               >
-                <p>paid base eop (BL)</p>
+                <p style={{
+                    fontSize: '14px',
+                    width: '158px',
+                    padding: '8px 0',
+                    borderBottom: "1px solid hsl(var(--border))",
+                }}>paid base eop (BL)</p>
                 <Check />
               </li>
               <li
                 style={{
                   display: "flex",
+                    width: "100%",
                   alignItems: "center",
                   justifyContent: "space-between",
+                    cursor: "pointer",
                 }}
               >
-                <p>pb prev m</p>
+                <p
+                    style={{
+                    fontSize: '14px',
+                    width: '158px',
+                    padding: '8px 0',
+                    borderBottom: "1px solid hsl(var(--border))",
+                }}>pb prev m</p>
                 <Check />
               </li>
             </ul>

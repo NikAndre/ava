@@ -4,6 +4,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/shared/components/ui/chart";
+import {PureComponent} from "react";
 
 const chartConfig = {
   desktop: {
@@ -15,6 +16,26 @@ const chartConfig = {
     color: "hsl(var(--chart-2))",
   },
 };
+
+class CustomizedLabel extends PureComponent {
+    render() {
+        const { x, y, stroke, value } = this.props;
+
+        return (
+            <text
+                x={x}
+                y={y - 10}
+                dy={-4}
+                fill={stroke}
+                fontSize={14}
+                fontWeight={500}
+                textAnchor="middle"
+            >
+                {value}
+            </text>
+        );
+    }
+}
 
 export function AnaliticalLineChart({ data }) {
   return (
@@ -29,6 +50,7 @@ export function AnaliticalLineChart({ data }) {
           margin={{
             right: 12,
             top: 12,
+              left: -20,
           }}
           style={{ width: "100%" }}
         >
@@ -57,6 +79,7 @@ export function AnaliticalLineChart({ data }) {
             activeDot={{
               r: 8,
             }}
+            label={<CustomizedLabel />}
           />
           <Line
             dataKey="desktop2"
@@ -70,6 +93,7 @@ export function AnaliticalLineChart({ data }) {
             activeDot={{
               r: 8,
             }}
+            label={<CustomizedLabel />}
           />
           <Line
             dataKey="desktop3"
@@ -83,6 +107,7 @@ export function AnaliticalLineChart({ data }) {
             activeDot={{
               r: 8,
             }}
+            label={<CustomizedLabel />}
           />
         </LineChart>
       </ChartContainer>

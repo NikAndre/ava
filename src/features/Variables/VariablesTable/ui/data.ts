@@ -33,14 +33,14 @@ export const data: VariableType[] = [
             },
             {
                 month: "April",
-                desktop1: 432,
+
                 desktop2: 286,
                 desktop3: 123,
                 mobile: 190,
             },
             {
                 month: "May",
-                desktop1: 123,
+
                 desktop2: 444,
                 desktop3: 222,
                 mobile: 130,
@@ -54,42 +54,42 @@ export const data: VariableType[] = [
             },
             {
                 month: "July",
-                desktop1: 186,
+
                 desktop2: 246,
                 desktop3: 326,
                 mobile: 80,
             },
             {
                 month: "August",
-                desktop1: 186,
+
                 desktop2: 286,
                 desktop3: 386,
                 mobile: 200,
             },
             {
                 month: "September",
-                desktop1: 756,
+
                 desktop2: 123,
                 desktop3: 222,
                 mobile: 120,
             },
             {
                 month: "October",
-                desktop1: 432,
+
                 desktop2: 286,
                 desktop3: 123,
                 mobile: 190,
             },
             {
                 month: "November",
-                desktop1: 123,
+
                 desktop2: 444,
                 desktop3: 222,
                 mobile: 130,
             },
             {
                 month: "December",
-                desktop1: 321,
+
                 desktop2: 346,
                 desktop3: 215,
                 mobile: 140,
