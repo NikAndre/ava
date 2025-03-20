@@ -3,9 +3,10 @@ export type VariableType = {
   variableName: string;
   tags: string[];
   status: string;
-  date: string;
+  actualDate: string;
   username: string;
   chartData: any[];
+  activity: string;
 };
 
 export type VariableSliceType = {

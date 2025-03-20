@@ -29,172 +29,24 @@ import {
 } from "@/shared/components/ui/table";
 import { useEffect } from "react";
 import { VariableType } from "@/shared/store/slices/variablesSlice/types.ts";
+import { data } from "./data.ts"
+import styles from "@/features/Admin/ScenariosTable/ui/ScenariosTable.module.css";
+import {Trash2} from "lucide-react";
 
-const data: VariableType[] = [
-  {
-    id: "1",
-    variableName: "paid base EOP",
-    tags: ["base", "EOP"],
-    status: "опубликована",
-    date: "Август 2024",
-    username: "Vasya",
-    chartData: [
-      {
-        month: "January",
-        desktop1: 186,
-        desktop2: 246,
-        desktop3: 326,
-        mobile: 80,
-      },
-      {
-        month: "February",
-        desktop1: 186,
-        desktop2: 286,
-        desktop3: 386,
-        mobile: 200,
-      },
-      {
-        month: "March",
-        desktop1: 756,
-        desktop2: 123,
-        desktop3: 222,
-        mobile: 120,
-      },
-      {
-        month: "April",
-        desktop1: 432,
-        desktop2: 286,
-        desktop3: 123,
-        mobile: 190,
-      },
-      {
-        month: "May",
-        desktop1: 123,
-        desktop2: 444,
-        desktop3: 222,
-        mobile: 130,
-      },
-      {
-        month: "June",
-        desktop1: 321,
-        desktop2: 346,
-        desktop3: 215,
-        mobile: 140,
-      },
-    ],
-  },
-  {
-    id: "2",
-    variableName: "revenue product cloud",
-    tags: ["revenue", "cloud"],
-    status: "опубликована",
-    date: "Сентябрь 2024",
-    username: "Vasya",
-    chartData: [
-      {
-        month: "January",
-        desktop1: 321,
-        desktop2: 213,
-        desktop3: 876,
-        mobile: 123,
-      },
-      {
-        month: "February",
-        desktop1: 543,
-        desktop2: 342,
-        desktop3: 345,
-        mobile: 123,
-      },
-      {
-        month: "March",
-        desktop1: 21,
-        desktop2: 543,
-        desktop3: 222,
-        mobile: 120,
-      },
-      {
-        month: "April",
-        desktop1: 123,
-        desktop2: 173,
-        desktop3: 123,
-        mobile: 432,
-      },
-      {
-        month: "May",
-        desktop1: 222,
-        desktop2: 111,
-        desktop3: 333,
-        mobile: 123,
-      },
-      {
-        month: "June",
-        desktop1: 321,
-        desktop2: 346,
-        desktop3: 215,
-        mobile: 140,
-      },
-    ],
-  },
-  {
-    id: "3",
-    variableName: "inflow paid base",
-    tags: ["base"],
-    status: "черновик",
-    date: "Август 2024",
-    username: "Vasya",
-    chartData: [
-      {
-        month: "January",
-        desktop1: 186,
-        desktop2: 246,
-        desktop3: 326,
-        mobile: 80,
-      },
-      {
-        month: "February",
-        desktop1: 186,
-        desktop2: 286,
-        desktop3: 386,
-        mobile: 200,
-      },
-      {
-        month: "March",
-        desktop1: 756,
-        desktop2: 123,
-        desktop3: 222,
-        mobile: 120,
-      },
-      {
-        month: "April",
-        desktop1: 432,
-        desktop2: 286,
-        desktop3: 123,
-        mobile: 190,
-      },
-      {
-        month: "May",
-        desktop1: 123,
-        desktop2: 444,
-        desktop3: 222,
-        mobile: 130,
-      },
-      {
-        month: "June",
-        desktop1: 321,
-        desktop2: 346,
-        desktop3: 215,
-        mobile: 140,
-      },
-    ],
-  },
-];
 
-export function VariablesDataTable() {
+export function VariablesDataTable({isAdmin = false}) {
+  const getClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    console.log(true)
+  }
+
   const columns: ColumnDef<VariableType>[] = [
     {
       accessorKey: "variableName",
       header: () => <div className="text-primary">Название переменной</div>,
-      cell: ({ row }) => <div>{row.getValue("variableName")}</div>,
+      cell: ({ row }) => <div>{row.getValue("variableName")}</div> ,
     },
     {
       accessorKey: "tags",
@@ -202,10 +54,10 @@ export function VariablesDataTable() {
       cell: ({ row }) => <div>{row.getValue("tags")?.join(", ")}</div>,
     },
     {
-      accessorKey: "date",
+      accessorKey: "actualDate",
       header: () => <div className="text-primary">Актуальность данных</div>,
       cell: ({ row }) => (
-        <div className="lowercase">{row.getValue("date")}</div>
+        <div className="lowercase">{row.getValue("actualDate")}</div>
       ),
     },
     {
@@ -220,6 +72,55 @@ export function VariablesDataTable() {
       header: () => <div className="text-primary">Владелец переменной</div>,
       cell: ({ row }) => {
         return <div>{row.getValue("username")}</div>;
+      },
+    },
+  ];
+
+  const columnsAdmin: ColumnDef<VariableType>[] = [
+    {
+      accessorKey: "variableName",
+      header: () => <div className="text-primary">Название переменной</div>,
+      cell: ({ row }) => {
+        return (<div className={styles['cell_hover']}>
+          {row.getValue("variableName")}
+          {
+              isAdmin &&
+              <Trash2 className={styles['cell_icon']} onClick={(e) => getClick(e)}/>
+          }
+        </div>)
+      },
+    },
+    {
+      accessorKey: "tags",
+      header: () => <div className="text-primary">Теги</div>,
+      cell: ({ row }) => <div>{row.getValue("tags")?.join(", ")}</div>,
+    },
+    {
+      accessorKey: "actualDate",
+      header: () => <div className="text-primary">Актуальность данных</div>,
+      cell: ({ row }) => (
+          <div className="lowercase">{row.getValue("actualDate")}</div>
+      ),
+    },
+    {
+      accessorKey: "status",
+      header: () => <div className="text-primary">Состояние переменной</div>,
+      cell: ({ row }) => {
+        return <div>{row.getValue("status")}</div>;
+      },
+    },
+    {
+      accessorKey: "username",
+      header: () => <div className="text-primary">Владелец переменной</div>,
+      cell: ({ row }) => {
+        return <div>{row.getValue("username")}</div>;
+      },
+    },
+    {
+      accessorKey: "activity",
+      header: () => <div className="text-primary">Последняя активность</div>,
+      cell: ({ row }) => {
+        return <div>{row.getValue("activity")}</div>;
       },
     },
   ];
@@ -241,7 +142,7 @@ export function VariablesDataTable() {
 
   const table = useReactTable({
     data: variables,
-    columns,
+    columns: isAdmin ? columnsAdmin : columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
@@ -287,6 +188,7 @@ export function VariablesDataTable() {
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
                   onClick={() => {
+                    if (isAdmin) return
                     dispatch(setActiveVariable({ id: row.original.id }));
                     dispatch(
                       addVariableToCheckedList({ variable: row.original }),
@@ -296,7 +198,7 @@ export function VariablesDataTable() {
                   style={{ cursor: "pointer" }}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id} className="border">
+                    <TableCell key={cell.id} className={`border` + " " + styles["cell"]}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext(),

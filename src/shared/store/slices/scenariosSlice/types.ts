@@ -6,6 +6,7 @@ export type ScenarioType = {
     startDate: string;
     endDate: string;
     isEditable: boolean;
+    hasInitiatives: boolean
 };
 
 export type ScenarioSliceType = {

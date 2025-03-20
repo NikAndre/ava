@@ -9,6 +9,7 @@ import {SquareX} from "lucide-react";
 import {useDispatch, useSelector} from "react-redux";
 import {ScenarioType} from "@/shared/store/slices/scenariosSlice/types.ts";
 import {ScenariosList} from "@/entities/Scenario/ScenariosList";
+import {ScenarioForm} from "@/features/Admin/ScenarioForm";
 
 export const ScenariosTab = () => {
     const activeScenario = useSelector((store) => store.scenarios.activeScenario);
@@ -67,7 +68,7 @@ export const ScenariosTab = () => {
                     })}
                 </TabsList>
             </Tabs>
-            <ScenariosList />
+            { activeScenario ? <ScenarioForm data={activeScenario} /> : <ScenariosList /> }
         </>
   );
 };

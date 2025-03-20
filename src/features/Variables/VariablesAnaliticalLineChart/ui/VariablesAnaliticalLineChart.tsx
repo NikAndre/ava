@@ -1,15 +1,5 @@
-import { TrendingUp } from "lucide-react";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/shared/components/ui/card";
-import {
-  ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
@@ -25,6 +15,7 @@ const chartConfig = {
     color: "hsl(var(--chart-2))",
   },
 };
+
 export function AnaliticalLineChart({ data }) {
   return (
     <div style={{ width: "83%", height: "300px" }}>

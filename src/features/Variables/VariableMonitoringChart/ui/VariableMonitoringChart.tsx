@@ -179,22 +179,23 @@ const data = [
   },
   {
     desktop1: 115,
+    desktop2: 115,
     date: "01.01.2024",
   },
   {
-    desktop1: 105,
+    desktop2: 105,
     date: "01.01.2024",
   },
   {
-    desktop1: 120,
+    desktop2: 120,
     date: "01.01.2024",
   },
   {
-    desktop1: 101,
+    desktop2: 101,
     date: "01.01.2024",
   },
   {
-    desktop1: 55,
+    desktop2: 55,
     date: "01.01.2024",
   },
 ];
@@ -212,7 +213,7 @@ export function VariableMonitoringChart() {
           margin={{
             right: 12,
             top: 12,
-            left: -20
+            left: -40
           }}
           style={{ width: "100%" }}
         >
@@ -242,6 +243,22 @@ export function VariableMonitoringChart() {
             activeDot={{
               r: 6,
             }}
+          />
+          <Line
+              dataKey="desktop2"
+              type="natural"
+              stroke="#075985"
+              strokeWidth={3}
+              dot={{
+                r: 4,
+                fill: "#075985",
+                stroke: "#075985",
+                strokeDasharray:"0"
+              }}
+              activeDot={{
+                r: 6,
+              }}
+              strokeDasharray={"10 5"}
           />
         </LineChart>
       </ChartContainer>

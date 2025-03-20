@@ -27,7 +27,7 @@ export const RequestForm = ({ data }: FormProps) => {
       alert(JSON.stringify(values, null, 2));
     },
   });
-
+    console.log(data)
   return (
     <form
       onSubmit={formik.handleSubmit}

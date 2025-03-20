@@ -47,7 +47,7 @@ export function VariableAnaliticalBarChart() {
           />
           <ReferenceLine y={0} />
           <Bar dataKey="visitors">
-            <LabelList position="top" dataKey="month" fillOpacity={1} />
+            <LabelList position="top" dataKey="visitors" fillOpacity={1} fill={'black'} />
             {chartData.map((item) => (
               <Cell
                 key={item.month}

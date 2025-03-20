@@ -14,6 +14,21 @@ import { FactorBlock } from "./FactorBlock";
 import { ModelingBlock } from "./ModelingBlock";
 import { ChartMisc } from "@/shared/components/custom/ChartMisc/ui/ChartMisc";
 
+const chartMiscData = [
+  {
+    title: "AC 2024",
+    color: "#000000",
+  },
+  {
+    title: "AC 2023",
+    color: "#1A6B25",
+  },
+  {
+    title: "AC 2025",
+    color: "#0F9ED5",
+  },
+]
+
 export const AnalysisTab = () => {
   const activeVariable = useSelector((store) => store.variables.activeVariable);
   const [activeTab, setActiveTab] = useState<string>("compare");
@@ -27,7 +42,7 @@ export const AnalysisTab = () => {
           </CardHeader>
           <CardContent>
             <ul>
-              <ChartMisc />
+              { chartMiscData.map(({title, color}) => <ChartMisc title={title} color={color} key={color+title} />) }
             </ul>
           </CardContent>
         </Card>

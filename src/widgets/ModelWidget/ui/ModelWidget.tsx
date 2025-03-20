@@ -27,12 +27,12 @@ export const ModelWidget = () => {
         </TabsList>
       </Tabs>
 
-          {activeTab === "analysis" && <AnalysisTab />}
-          {activeTab === "dynamic" && <DynamicTab />}
-          {activeTab === "information" && <InformationTab />}
-          {activeTab === "options" && <OptionsTab />}
-          {activeTab === "permissions" && <PermissionsTab />}
-          {activeTab === "format" && <PermissionsTab />}
+      {activeTab === "analysis" && <AnalysisTab />}
+      {activeTab === "dynamic" && <DynamicTab />}
+      {activeTab === "information" && <InformationTab />}
+      {activeTab === "options" && <OptionsTab />}
+      {activeTab === "permissions" && <PermissionsTab />}
+      {activeTab === "format" && <PermissionsTab />}
     </>
   );
 };

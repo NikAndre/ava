@@ -42,6 +42,7 @@ const data: ScenarioType[] = [
     startDate: "01.01.2024",
     endDate: "01.01.2024",
     isEditable: true,
+    hasInitiatives: false,
   },
 ];
 

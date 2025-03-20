@@ -122,7 +122,7 @@ export const OptionsTab = () => {
               </p>
               <Dialog>
                 <DialogTrigger style={{ width: "100%" }}>
-                  <div
+                  <ul
                     style={{
                       width: "100%",
                       minHeight: "36px",
@@ -154,12 +154,13 @@ export const OptionsTab = () => {
                         {elem}
                       </li>
                     ))}
-                  </div>
+                  </ul>
                 </DialogTrigger>
-                <DialogContent style={{ width: "618px" }}>
+                <DialogContent style={{ width: "818px" }}>
                   <DialogHeader style={{ marginBottom: "10px" }}>
                     <DialogTitle>Составьте свою формулу</DialogTitle>
                   </DialogHeader>
+
                   <div
                     style={{
                       width: "100%",
@@ -171,41 +172,40 @@ export const OptionsTab = () => {
                       padding: "10px",
                     }}
                   >
-                    <div
-                      style={{
-                        width: "100%",
-                        minHeight: "36px",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 10,
-                        boxSizing: "border-box",
-                        borderRadius: 6,
-                        border: "1px solid #CBD5E1",
-                        padding: "5px 10px",
-                        flexWrap: "wrap",
-                      }}
-                    >
-                      {formulaArray?.map((elem, index) => (
-                        <li
-                          key={index + elem}
+                      <div
                           style={{
-                            width: "fit-content",
-                            height: "30px",
+                              display: "flex",
+                              alignItems: "center",
+                              gap: 10,
+                          }}
+                      >
+                          <div style={{ whiteSpace: "nowrap",    minWidth: "200px", }} >Введите имя переменной</div>
+                          <Input
+                              value={inputValue}
+                              onChange={(e) => onInputChange(e)}
+                          />
+                          <Button
+                              variant={"default"}
+                              onClick={() => onFormulaInputSubmit()}
+                          >
+                              OK
+                          </Button>
+                      </div>
+                    <div
+                        style={{
+                            width: "100%",
                             display: "flex",
                             alignItems: "center",
-                            justifyContent: "center",
-                            backgroundColor: "#F1F5F9",
-                            borderRadius: "6px",
-                            cursor: "pointer",
-                            padding: "0 10px",
-                          }}
-                        >
-                          {elem}
-                        </li>
-                      ))}
-                    </div>
-
-                    <ul
+                            gap: 10,
+                        }}
+                    >
+                        <div
+                            style={{
+                                whiteSpace: "nowrap",
+                                minWidth: "200px",
+                            }}
+                        >Выберите действие</div>
+                      <ul
                       style={{
                         width: "100%",
                         display: "flex",
@@ -231,32 +231,63 @@ export const OptionsTab = () => {
                           {elem}
                         </li>
                       ))}
-                      <Button
-                        style={{ marginLeft: "auto" }}
-                        variant={"default"}
-                        onClick={() => setFormulaArray([])}
-                      >
-                        Clear formula
-                      </Button>
-                    </ul>
-
-                    <div
-                      style={{
-                        display: "flex",
-                        gap: 10,
-                      }}
-                    >
-                      <Input
-                        value={inputValue}
-                        onChange={(e) => onInputChange(e)}
-                      />
-                      <Button
-                        variant={"default"}
-                        onClick={() => onFormulaInputSubmit()}
-                      >
-                        OK
-                      </Button>
+                      </ul>
                     </div>
+                    <div
+                        style={{
+                            width: "100%",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 10,
+                        }}
+                    >
+                        <div
+                            style={{
+                                whiteSpace: "nowrap",
+                                minWidth: "200px",
+                            }}
+                        >Итоговая формула</div>
+                        <ul
+                            style={{
+                                width: "100%",
+                                minHeight: "36px",
+                                display: "flex",
+                                alignItems: "center",
+                                gap: 10,
+                                boxSizing: "border-box",
+                                borderRadius: 6,
+                                border: "1px solid #CBD5E1",
+                                padding: "5px 10px",
+                                flexWrap: "wrap",
+                            }}
+                        >
+                            {formulaArray?.map((elem, index) => (
+                                <li
+                                    key={index + elem}
+                                    style={{
+                                        width: "fit-content",
+                                        height: "30px",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        backgroundColor: "#F1F5F9",
+                                        borderRadius: "6px",
+                                        cursor: "pointer",
+                                        padding: "0 10px",
+                                    }}
+                                >
+                                    {elem}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                      <Button
+                          style={{ marginLeft: "auto" }}
+                          variant={"default"}
+                          onClick={() => setFormulaArray([])}
+                      >
+                          Clear formula
+                      </Button>
                   </div>
                 </DialogContent>
               </Dialog>

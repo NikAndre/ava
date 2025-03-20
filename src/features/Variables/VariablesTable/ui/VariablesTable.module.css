@@ -1,0 +1,13 @@
+.cell_hover {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cell_icon {
+    display: none;
+}
+
+.cell_hover:hover .cell_icon {
+    display: block;
+}

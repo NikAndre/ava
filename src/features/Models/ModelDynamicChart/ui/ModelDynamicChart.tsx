@@ -44,23 +44,24 @@ const renderLegend = (props) => {
 };
 
 export const ModelDynamicChart = ({ data }) => {
+  console.log(data);
   return (
-    <div style={{ width: "100%", height: 400 }}>
+    <div style={{ width: "100%", height: 350 }}>
       <ResponsiveContainer width={"100%"} height={"100%"}>
         <ComposedChart
           width={500}
-          height={400}
+          height={350}
           data={data}
           margin={{
-            top: 40,
+            top: 0,
             right: 20,
             bottom: 0,
-            left: 0,
+            left: -55,
           }}
           key={data.name}
         >
           <CartesianGrid stroke="#f5f5f5" />
-          <XAxis dataKey={"name"} axisLine={false} tickLine={false} />
+          <XAxis dataKey={"name"} tickLine={false} />
           <YAxis
             dataKey={"pv"}
             tick={false}

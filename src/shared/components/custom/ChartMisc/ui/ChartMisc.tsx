@@ -1,4 +1,4 @@
-export const ChartMisc = ({ name = "BU 2024", color = "#1A6B25" }) => {
+export const ChartMisc = ({ title = "BU 2024", color = "#1A6B25" }) => {
   return (
     <li
       style={{
@@ -6,6 +6,8 @@ export const ChartMisc = ({ name = "BU 2024", color = "#1A6B25" }) => {
         justifyContent: "space-between",
         alignItems: "center",
         flexWrap: "nowrap",
+        padding: '8px 0',
+        borderBottom: "1px solid hsl(var(--border))",
       }}
     >
       <p
@@ -16,7 +18,7 @@ export const ChartMisc = ({ name = "BU 2024", color = "#1A6B25" }) => {
           whiteSpace: "nowrap",
         }}
       >
-        {name}
+        {title}
       </p>
       <div
         style={{

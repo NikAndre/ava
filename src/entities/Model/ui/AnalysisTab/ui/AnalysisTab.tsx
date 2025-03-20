@@ -28,7 +28,7 @@ export const AnalysisTab = () => {
           width: "47%",
         }}
       >
-        <p style={{ fontSize: "14px", minWidth: "180px" }}>Период</p>
+        <p style={{ fontSize: "14px", }}>Период</p>
         <Select>
           <SelectTrigger className="w-[165px]">
             <SelectValue placeholder="Период" />
@@ -36,8 +36,10 @@ export const AnalysisTab = () => {
           <SelectContent>
             <SelectGroup>
               <SelectLabel>Период</SelectLabel>
-              <SelectItem value="1">6M YTD</SelectItem>
-              <SelectItem value="2">динамика</SelectItem>
+                <SelectItem value="3">1M</SelectItem>
+                <SelectItem value="4">QTR</SelectItem>
+              <SelectItem value="1">6M</SelectItem>
+              <SelectItem value="2">YTD</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>

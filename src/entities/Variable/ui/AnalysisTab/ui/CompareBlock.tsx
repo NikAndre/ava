@@ -14,7 +14,6 @@ import { VariableCompareLineChart } from "@/features/Variables/VariableCompareLi
 
 export const CompareBlock = () => {
   const [chartType, setType] = useState("line");
-  console.log(chartType);
   return (
     <div style={{ display: "flex", gap: "20px" }}>
       {chartType === "perc" ? (
@@ -87,7 +86,7 @@ export const CompareBlock = () => {
                 <SelectGroup>
                   <SelectLabel>Type</SelectLabel>
                   <SelectItem value="perc">%</SelectItem>
-                  <SelectItem value="num">num</SelectItem>
+                  <SelectItem value="line">num</SelectItem>
                 </SelectGroup>
               </SelectContent>
             </Select>
